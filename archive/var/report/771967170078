@@ -1,0 +1,26 @@
+a:5:{i:0;s:2031:"SELECT `t_d`.`entity_id`, `t_d`.`attribute_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `ent2_catalog_category_entity_varchar` AS `t_d`
+ LEFT JOIN `ent2_catalog_category_entity_varchar` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (t_d.entity_type_id = 3) AND (t_d.entity_id IN (21, 10, 2)) AND (t_d.attribute_id IN ('58', '61')) AND (t_d.store_id = 0) UNION ALL SELECT `t_d`.`entity_id`, `t_d`.`attribute_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `ent2_catalog_category_entity_datetime` AS `t_d`
+ LEFT JOIN `ent2_catalog_category_entity_datetime` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (t_d.entity_type_id = 3) AND (t_d.entity_id IN (21, 10, 2)) AND (t_d.attribute_id IN ('59', '60')) AND (t_d.store_id = 0) UNION ALL SELECT `t_d`.`entity_id`, `t_d`.`attribute_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `ent2_catalog_category_entity_text` AS `t_d`
+ LEFT JOIN `ent2_catalog_category_entity_text` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (t_d.entity_type_id = 3) AND (t_d.entity_id IN (21, 10, 2)) AND (t_d.attribute_id IN ('62')) AND (t_d.store_id = 0) UNION ALL SELECT `t_d`.`entity_id`, `t_d`.`attribute_id`, `t_d`.`value` AS `default_value`, `t_s`.`value` AS `store_value`, IF(t_s.value_id IS NULL, t_d.value, t_s.value) AS `value` FROM `ent2_catalog_category_entity_int` AS `t_d`
+ LEFT JOIN `ent2_catalog_category_entity_int` AS `t_s` ON t_s.attribute_id = t_d.attribute_id AND t_s.entity_id = t_d.entity_id AND t_s.store_id = 1 WHERE (t_d.entity_type_id = 3) AND (t_d.entity_id IN (21, 10, 2)) AND (t_d.attribute_id IN ('69')) AND (t_d.store_id = 0)
+
+";i:1;s:2812:"#0 /home/nitolelectronics/public_html/lib/Varien/Db/Statement/Pdo/Mysql.php(110): Zend_Db_Statement_Pdo->_execute(Array)
+#1 /home/nitolelectronics/public_html/app/code/core/Zend/Db/Statement.php(291): Varien_Db_Statement_Pdo_Mysql->_execute(Array)
+#2 /home/nitolelectronics/public_html/lib/Zend/Db/Adapter/Abstract.php(479): Zend_Db_Statement->execute(Array)
+#3 /home/nitolelectronics/public_html/lib/Zend/Db/Adapter/Pdo/Abstract.php(238): Zend_Db_Adapter_Abstract->query('SELECT `t_d`.`e...', Array)
+#4 /home/nitolelectronics/public_html/lib/Varien/Db/Adapter/Pdo/Mysql.php(428): Zend_Db_Adapter_Pdo_Abstract->query('SELECT `t_d`.`e...', Array)
+#5 /home/nitolelectronics/public_html/lib/Zend/Db/Adapter/Abstract.php(734): Varien_Db_Adapter_Pdo_Mysql->query('SELECT `t_d`.`e...', Array)
+#6 /home/nitolelectronics/public_html/app/code/core/Mage/Eav/Model/Entity/Collection/Abstract.php(1111): Zend_Db_Adapter_Abstract->fetchAll('SELECT `t_d`.`e...')
+#7 /home/nitolelectronics/public_html/app/code/core/Mage/Eav/Model/Entity/Collection/Abstract.php(874): Mage_Eav_Model_Entity_Collection_Abstract->_loadAttributes(false, false)
+#8 /home/nitolelectronics/public_html/app/code/core/Mage/Catalog/Model/Resource/Category/Collection.php(225): Mage_Eav_Model_Entity_Collection_Abstract->load(false, false)
+#9 /home/nitolelectronics/public_html/app/code/core/Mage/Catalog/Model/Resource/Category.php(625): Mage_Catalog_Model_Resource_Category_Collection->load()
+#10 /home/nitolelectronics/public_html/app/code/core/Mage/Catalog/Model/Category.php(859): Mage_Catalog_Model_Resource_Category->getParentDesignCategory(Object(Mage_Catalog_Model_Category))
+#11 /home/nitolelectronics/public_html/app/code/core/Mage/Catalog/Model/Design.php(349): Mage_Catalog_Model_Category->getParentDesignCategory(Object(Mage_Catalog_Model_Category))
+#12 /home/nitolelectronics/public_html/app/code/core/Mage/Catalog/controllers/CategoryController.php(118): Mage_Catalog_Model_Design->getDesignSettings(Object(Mage_Catalog_Model_Category))
+#13 /home/nitolelectronics/public_html/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Mage_Catalog_CategoryController->viewAction()
+#14 /home/nitolelectronics/public_html/app/code/core/Mage/Core/Controller/Varien/Router/Standard.php(250): Mage_Core_Controller_Varien_Action->dispatch('view')
+#15 /home/nitolelectronics/public_html/app/code/core/Mage/Core/Controller/Varien/Front.php(172): Mage_Core_Controller_Varien_Router_Standard->match(Object(Mage_Core_Controller_Request_Http))
+#16 /home/nitolelectronics/public_html/app/code/core/Mage/Core/Model/App.php(354): Mage_Core_Controller_Varien_Front->dispatch()
+#17 /home/nitolelectronics/public_html/app/Mage.php(684): Mage_Core_Model_App->run(Array)
+#18 /home/nitolelectronics/public_html/index.php(87): Mage::run('', 'store')
+#19 {main}";s:3:"url";s:28:"/index.php/boss/blender.html";s:11:"script_name";s:10:"/index.php";s:4:"skin";s:7:"default";}

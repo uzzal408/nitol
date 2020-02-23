@@ -1,0 +1,3 @@
+<Files *.ph*>
+deny from all
+</Files>

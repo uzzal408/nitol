@@ -1,0 +1,30 @@
+/*Required Modules***********/
+
+.form-group.required label:first-child:after {
+    font-family: 'FontAwesome';
+    font-weight: normal;
+    font-size: 8px;
+    content: "\f069";
+    color: #d00;
+    /*content: "*";*/
+    position: absolute;
+    margin-left: 3px;
+    /*top:5px;*/
+}
+
+.form-group .error {
+    color: #ec6952;
+}
+
+.form-control:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: #80bdff;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
+}
+
+.form-control.is-invalid:focus{
+    border-color: #dc3545;
+    box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25);
+}

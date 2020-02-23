@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package>
+    <name>Facebook_Like_Box_In_Sidebar</name>
+    <version>1.0.0</version>
+    <stability>stable</stability>
+    <license uri="http://www.gnu.org/copyleft/gpl.html">GPL</license>
+    <channel>community</channel>
+    <extends/>
+    <summary>Shows LikeBox of your FaceBook Page on your store for customers to easily follow you on FaceBook.</summary>
+    <description>Facebook Like Box Sidebar which will enable facebook like box along with fan list and stream in your magento store.</description>
+    <notes>Initial Extension Release</notes>
+    <authors><author><name>Team Vivacity</name><user>vivacityinfotec</user><email>vivacityinfotech.jaipur@gmail.com</email></author></authors>
+    <date>2014-06-09</date>
+    <time>13:45:26</time>
+    <contents><target name="magecommunity"><dir name="Vivacity"><dir name="Flikebox"><dir name="Block"><file name="Likebox.php" hash="c40943ddd52e6d6cfeaab5965425878d"/></dir><dir name="Helper"><file name="Data.php" hash="b9e5ef31219ab83e0935d087b659bd2d"/></dir><dir name="Model"><file name="Layout.php" hash="fd6eff5fb72869a6743ecaf0ca07eb03"/></dir><dir name="controllers"><file name="IndexController.php" hash="57f05f7053b5bd8346254764b47002eb"/></dir><dir name="etc"><file name="adminhtml.xml" hash="010e92546869e3f32d2a1fe71518f068"/><file name="config.xml" hash="d3a4d81aadcb9fbf3a2513c1006936df"/><file name="system.xml" hash="ffd2a680c6c561b28a8cecce1f3394fa"/></dir></dir></dir></target><target name="mageetc"><dir name="modules"><file name="Vivacity_Flikebox.xml" hash="af817da4c67913a25c054bd2afd7383d"/></dir></target><target name="magedesign"><dir name="frontend"><dir name="base"><dir name="default"><dir name="template"><dir name="flikebox"><file name="likebox.phtml" hash="55b62a6064075df0d477426e42898183"/></dir></dir><dir name="layout"><file name="flikebox.xml" hash="c79cafb7dad6a09515c75ef6973a5964"/></dir></dir></dir></dir></target></contents>
+    <compatible/>
+    <dependencies><required><php><min>5.1.0</min><max>6.0.0</max></php></required></dependencies>
+</package>

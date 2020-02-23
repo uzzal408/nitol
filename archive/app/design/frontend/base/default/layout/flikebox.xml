@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<layout version="1.0.0">
+    <default>
+        <reference name="left">
+            <block type="flikebox/likebox" name="left.flikebox.likebox" template="flikebox/likebox.phtml">
+		<action method="setData"><name>position</name><value>left</value></action>
+		<action method="setData"><name>page_id</name><value>flikebox/general/page_id</value></action>
+		<action method="setData"><name>width</name><value>flikebox/general/width</value></action>
+                <action method="setData"><name>connection</name><value>flikebox/general/connection</value></action>
+                <action method="setData"><name>height</name><value>flikebox/general/height</value></action>
+                <action method="setData"><name>show_header</name><value>flikebox/general/show_header</value></action>
+                <action method="setData"><name>show_face</name><value>flikebox/general/show_face</value></action>
+                <action method="setData"><name>show_stream</name><value>flikebox/general/show_stream</value></action>
+	    </block>
+        </reference>
+        <reference name="right">
+            <block type="flikebox/likebox" name="right.flikebox.likebox" template="flikebox/likebox.phtml">
+		<action method="setData"><name>position</name><value>right</value></action>
+		<action method="setData"><name>page_id</name><value>flikebox/general/page_id</value></action>
+		<action method="setData"><name>width</name><value>flikebox/general/width</value></action>
+                <action method="setData"><name>height</name><value>flikebox/general/height</value></action>
+                <action method="setData"><name>connection</name><value>flikebox/general/connection</value></action>
+                <action method="setData"><name>show_header</name><value>flikebox/general/show_header</value></action>
+                <action method="setData"><name>show_face</name><value>flikebox/general/show_face</value></action>
+                <action method="setData"><name>show_stream</name><value>flikebox/general/show_stream</value></action>
+	    </block>
+        </reference>
+    </default>
+</layout> 

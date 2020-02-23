@@ -1,0 +1,11 @@
+[17-Jan-2019 17:51:00 UTC] PHP Deprecated:  __autoload() is deprecated, use spl_autoload_register() instead in /home/nitolelectronics/public_html/magento/app/code/core/Mage/Core/functions.php on line 60
+[17-Jan-2019 17:51:04 UTC] PHP Fatal error:  Uncaught Error: Function name must be a string in /home/nitolelectronics/public_html/magento/app/code/core/Mage/Core/Model/Layout.php:555
+Stack trace:
+#0 /home/nitolelectronics/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php(390): Mage_Core_Model_Layout->getOutput()
+#1 /home/nitolelectronics/public_html/magento/app/code/core/Mage/Cms/Helper/Page.php(137): Mage_Core_Controller_Varien_Action->renderLayout()
+#2 /home/nitolelectronics/public_html/magento/app/code/core/Mage/Cms/Helper/Page.php(52): Mage_Cms_Helper_Page->_renderPage(Object(Mage_Cms_IndexController), 'no-route')
+#3 /home/nitolelectronics/public_html/magento/app/code/core/Mage/Cms/controllers/IndexController.php(75): Mage_Cms_Helper_Page->renderPage(Object(Mage_Cms_IndexController), 'no-route')
+#4 /home/nitolelectronics/public_html/magento/app/code/core/Mage/Core/Controller/Varien/Action.php(418): Mage_Cms_IndexController->noRouteAction()
+#5 /home/nitolelectronics/public_html/magento/app/code/core/Mage/Core/Controller/Varien/ in /home/nitolelectronics/public_html/magento/app/code/core/Mage/Core/Model/Layout.php on line 555
+[12-Sep-2019 10:27:55 UTC] PHP Fatal error:  Call to undefined method Mage_GiftMessage_IndexController::_getMappedType() in /home/nitolelectronics/public_html/magento/app/code/core/Mage/GiftMessage/controllers/IndexController.php on line 44
+[22-Sep-2019 10:18:48 UTC] PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to allocate 140462369125256 bytes) in [no active file] on line 0
