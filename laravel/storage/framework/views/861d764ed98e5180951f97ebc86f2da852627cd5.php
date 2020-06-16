@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>" />
+    <meta name="csrf-token" content="<?php echo e(csrf_token()); ?>"/>
     <title>Nitol Electronics</title>
     <link rel="shortcut icon" href="<?php echo e(asset('/')); ?>client_end/images/fav.png" />
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic,900,900italic&amp;subset=latin,latin-ext" rel="stylesheet">
@@ -26,7 +27,6 @@
     <!-- layerSlider -->
 
     <!-- xzoom plugin here -->
-	
 	<script src="<?php echo e(asset('/')); ?>client_end/js/xZoom/jquery.js"></script>
 	<script src="<?php echo e(asset('/')); ?>client_end/js/xZoom/setup.js"></script>
    	<script type="text/javascript" src="<?php echo e(asset('/')); ?>client_end/js/xZoom/xzoom.min.js"></script>
@@ -34,6 +34,9 @@
     <!-- xzoom plugin here -->
 
     <?php echo $__env->yieldContent('stylesheet'); ?>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+    
 </head>
 
 
@@ -64,14 +67,323 @@
         var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
     })();
 </script>
-
-
-
 <div class="mercado-clone-wrap">
     <div class="mercado-panels-actions-wrap">
         <a class="mercado-close-btn mercado-close-panels" href="#">x</a>
     </div>
-    <div class="mercado-panels"></div>
+    <div class="mercado-panels">
+        <div class="nav-section ">
+            <div class="primary-nav-section">
+                <div class="container">
+                    <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu" >
+                        <li class="menu-item home-icon">
+                            <a href="<?php echo e(url('/')); ?>" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
+                        </li>
+                            <li class="menu-item menu-item-has-children item-megamenu">
+                                <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($category['name']=='TELEVISION'): ?>
+                                        <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="TELEVISION" class="link-term mercado-item-title">Television</a>
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <div class="wrap-megamenu">
+                                        <div class="megamenu-content min-height-526 bg-digital-electronic">
+                                            <div class="row">
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <h2 class="menu-title"><a href="#">SMART LED TV</a></h2>
+                                                            <ul>
+                                                            <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                    <?php if($category['name']=='TELEVISION'): ?>
+                                                                        <?php if(isset($category['children'])): ?>
+
+                                                        <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php if($subcategory['name']=='Smart LED TV'): ?>
+                                                                <?php $child = getChild($subcategory['id']) ?>
+                                                                <?php if(isset($child) && $child!=null): ?>
+                                                                    <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                        <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term"><?php echo e($subSubcategory->name); ?></a></li>
+                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                <?php endif; ?>
+                                                            <?php endif; ?>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <h2 class="menu-title"><a href="#">BASIC LED TV</a></h2>
+                                                        <ul>
+                                            <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                                <?php if($category['name']=='TELEVISION'): ?>
+
+                                                    <?php if(isset($category['children'])): ?>
+
+                                                        <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php if($subcategory['name']=='Basic LED TV'): ?>
+                                                                <?php $child = getChild($subcategory['id']) ?>
+                                                                <?php if(isset($child) && $child!=null): ?>
+                                                                    <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                        <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term"><?php echo e($subSubcategory->name); ?></a></li>
+                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                <?php endif; ?>
+                                                            <?php endif; ?>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </li>
+
+                            <li class="menu-item menu-item-has-children item-megamenu">
+                                <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($category['name']=='AIR CONDITIONAR'): ?>
+                                        <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="AIR CONDITIONAR" class="link-term mercado-item-title">Air Conditioner</a>
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+
+                                    <div class="wrap-megamenu">
+                                        <div class="megamenu-content min-height-526 bg-digital-electronic">
+                                            <div class="row">
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <h2 class="menu-title"><a href="#">SPLITE TYPE</a></h2>
+                                                <ul>
+                                            <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                                <?php if($category['name']=='AIR CONDITIONAR'): ?>
+
+                                                    <?php if(isset($category['children'])): ?>
+
+                                                        <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php if($subcategory['name']=='SPLITE TYPE'): ?>
+                                                                <?php $child = getChild($subcategory['id']) ?>
+                                                                <?php if(isset($child) && $child!=null): ?>
+                                                                    <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                        <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term"><?php echo e($subSubcategory->name); ?></a></li>
+                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                <?php endif; ?>
+                                                            <?php endif; ?>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <h2 class="menu-title"><a href="#">CEILING MOUNTED TYPE</a></h2>
+                                                        <ul>
+                                            <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                                <?php if($category['name']=='AIR CONDITIONAR'): ?>
+
+                                                    <?php if(isset($category['children'])): ?>
+
+                                                        <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php if($subcategory['name']=='Ceiling Mounted Type'): ?>
+                                                                <?php $child = getChild($subcategory['id']) ?>
+                                                                <?php if(isset($child) && $child!=null): ?>
+                                                                    <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                        <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term"><?php echo e($subSubcategory->name); ?></a></li>
+                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                <?php endif; ?>
+                                                            <?php endif; ?>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <h2 class="menu-title"><a href="#">CASSETTE TYPE</a></h2>
+                                                            <ul>
+                                            <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                                <?php if($category['name']=='AIR CONDITIONAR'): ?>
+
+                                                    <?php if(isset($category['children'])): ?>
+
+                                                        <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php if($subcategory['name']=='CASSETTE TYPE'): ?>
+                                                                                    <?php $child = getChild($subcategory['id']) ?>
+                                                                <?php if(isset($child) && $child!=null): ?>
+                                                                    <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                        <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term"><?php echo e($subSubcategory->name); ?></a></li>
+                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                <?php endif; ?>
+                                                            <?php endif; ?>
+                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                        </li>
+
+                            <li class="menu-item menu-item-has-children item-megamenu">
+                                <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($category['name']=='REFRIGERATOR'): ?>
+                                        <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="REFREGERATOR" class="link-term mercado-item-title">REFRIGERATORS</a>
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <div class="wrap-megamenu">
+                                        <div class="megamenu-content min-height-526 bg-digital-electronic">
+                                            <div class="row">
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <ul>
+                                    <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                        <?php if($category['name']=='REFRIGERATOR'): ?>
+                                            <?php $child = getChild($category['id']) ?>
+                                                                    <?php if(isset($child) && $child!=null): ?>
+                                                                        <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subcategory->id); ?>" class="link-term"><?php echo e($subcategory->name); ?></a></li>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                        </li>
+
+                            <li class="menu-item menu-item-has-children item-megamenu">
+                                <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($category['name']=='FREEZER'): ?>
+                                        <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="FREEZER" class="link-term mercado-item-title">FREEZER</a>
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <div class="wrap-megamenu">
+                                        <div class="megamenu-content min-height-526 bg-digital-electronic">
+                                            <div class="row">
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <ul>
+                                    <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                        <?php if($category['name']=='FREEZER'): ?>
+                                            <?php $child = getChild($category['id']) ?>
+
+                                            <?php if(isset($child) && $child!=null): ?>
+
+                                                <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subcategory->id); ?>" class="link-term"><?php echo e($subcategory->name); ?></a></li>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                        </li>
+                            <li class="menu-item menu-item-has-children item-megamenu">
+                                <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($category['name']=='HOME APPLIANCES'): ?>
+                                        <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="HOME APPLIANCES" class="link-term mercado-item-title">Home Appliance</a>
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <div class="wrap-megamenu">
+                                        <div class="megamenu-content min-height-526 bg-digital-electronic">
+                                            <div class="row">
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <ul>
+                                    <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                        <?php if($category['name']=='HOME APPLIANCES'): ?>
+                                            <?php $childTop = getChild($category['id']) ?>
+
+                                            <?php if(isset($childTop) && $childTop!=null): ?>
+                                                <?php $__currentLoopData = $childTop; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php if($subcategory->name!='Best Seller Home Appliance' && $subcategory->name!='New Arrivals Home Appliance' && $subcategory->name!='Top Rated Home Appliance'): ?>
+                                                        <?php $child = getChild($subcategory->id) ?>
+                                                        <?php if(isset($child) && $child!=null): ?>
+                                                            <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                                        <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term menu-title "><?php echo e($subSubcategory->name); ?></a></li>
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                        <?php endif; ?>
+                                                        <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subcategory->id); ?>" class="link-term menu-title "><?php echo e($subcategory->name); ?></a></li>
+                                                    <?php endif; ?>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </li>
+                        <li class="menu-item menu-item-has-children item-megamenu">
+                                <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($category['name']=='Accessories'): ?>
+                                        <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="ACCESSORIES" class="link-term mercado-item-title">Accessories</a>
+                                    <?php endif; ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <div class="wrap-megamenu">
+                                        <div class="megamenu-content min-height-526 bg-digital-electronic">
+                                            <div class="row">
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <ul>
+                                    <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                        <?php if($category['name']=='Accessories'): ?>
+                                            <?php $childTop = getChild($category['id']) ?>
+
+                                            <?php if(isset($childTop) && $childTop!=null): ?>
+
+                                                <?php $__currentLoopData = $childTop; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                    <?php $child = getChild($subcategory->id) ?>
+                                                        <?php if(isset($child) && $child!=null): ?>
+                                                            <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term menu-title "><?php echo e($subSubcategory->name); ?></a></li>
+                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                        <?php endif; ?>
+                                                        <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subcategory->id); ?>" class="link-term menu-title "><?php echo e($subcategory->name); ?></a></li>
+                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                </ul>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+        
+    </div>
 </div>
 
 <header id="header" class="header header-style-1">
@@ -92,24 +404,20 @@
                     </div>
                     <div class="topbar-menu right-menu">
                         <ul>
-                            
-                            
                             <li class="menu-item" ><a title="Store Location" href="<?php echo e(url('')); ?>/store/locator">Showrooms</a></li>
-                            
                             <li class="menu-item" ><a title="Corporate Information" href="<?php echo e(url('')); ?>/corporateInfo">Corporate Info </a></li>
                             <li class="menu-item" ><a title="Service Center" href="<?php echo e(url('')); ?>/serviceCenter/locator">Service Center </a></li>
-                            
-                            <?php if(Session::get('CustomerName')==''): ?>
-                                <li class="menu-item" ><a title="Register" href="<?php echo e(url('')); ?>/customer/register">Register</a></li> 
-                                <li class="menu-item" ><a title="Login" href="<?php echo e(url('')); ?>/customerLogin">Login</a></li>
+                             <li class="menu-item" ><a title="Newsletter" href="#">Newsletter / Blog</a></li>
+                            <?php if(auth()->guard('customer')->guest()): ?>
+                                <li class="menu-item" ><a title="Register" href="<?php echo e(route('customer.registration-form')); ?>">Register</a></li>
+                                <li class="menu-item" ><a title="Login" href="<?php echo e(route('customer.login-form')); ?>">Login</a></li>
                             <?php else: ?>
                                 <li class="menu-item" >
-                                    <a title="Customer Detail" href="<?php echo e(url('')); ?>/customer/customerInfomation"><?php echo e((Session::get('CustomerName'))); ?>
+                                    <a title="Customer Detail" href="<?php echo e(url('')); ?>/customer/customerInfomation"><?php echo e(Auth::guard('customer')->user()->name); ?>
 
                                     </a>
                                 </li>
-                                <li class="menu-item" ><a title="Logout" href="<?php echo e(url('')); ?>/customer/logout">Logout</a></li>
-                                
+                                <li class="menu-item" ><a title="Logout" href="<?php echo e(route('customer.logout')); ?>">Logout</a></li>
                             <?php endif; ?>
                         </ul>
                     </div>
@@ -128,10 +436,10 @@
                                 <input type="text" name="search" id="searchCategory" value="" placeholder="Search here...">
 
                                 <button form="form-search-top" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                
+
                                 <div class="wrap-list-cate">
 
-                                    <select class="form-control" value="" name="productCategory">
+                                     <select class="form-control" value="" name="productCategory">
                                         <option>All products</option>
                                         <?php $__currentLoopData = $categories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                             <?php if($category['name']=='TELEVISION'): ?>
@@ -190,7 +498,7 @@
 
                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                     </select>
-                                </div>                                
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -231,410 +539,285 @@
                 </div>
             </div>
 
-            <div class="nav-section">
+                <!-- MObile Menu End-->
+                <!--  Menu Descstop menu-->
+<div class="nav-section">
                 <div class="primary-nav-section">
                     <div class="container">
-                        <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu" >
-                            <li class="menu-item home-icon">
-                                <a href="<?php echo e(route('/')); ?>" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
-                            </li>
+                        <nav class="navbar-nit">
+                            <div class="sitenavigation">
+                              <ul>
+                                <li class="active2"><a href="<?php echo e(url('/')); ?>" class="homeicon" ><i class="fa fa-home" aria-hidden="true"></i></a></span></li>
+                                  <li class="nav-dropdown">
+                                  <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                      <?php if($category['name']=='TELEVISION'): ?>
+                                          <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="Digital & Electronics" class="link-term mercado-item-title">Television</a>
+                                      <?php endif; ?>
+                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
-                            <li class="menu-item menu-item-has-children item-megamenu" >
-                                <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                      
-                                    <?php if($category['name']=='TELEVISION'): ?>
-                                        <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="Digital & Electronics" class="link-term mercado-item-title">Television</a>
-                                    <?php endif; ?>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>        
-                                <div class="wrap-megamenu">
-                                    <div class="megamenu-content min-height-526 bg-digital-electronic">
-                                        <div class="row">
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <h2 class="menu-title">SMART LED TV</h2>
-                                                    <ul>
-                                                        <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            
-                                                            <?php if($category['name']=='TELEVISION'): ?>
-                                                            
-                                                                <?php if(isset($category['children'])): ?>
-                                                                    
-                                                                    <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                        <?php if($subcategory['name']=='Smart LED TV'): ?>
-                                                                            <?php if(isset($subcategory['children'])): ?>
-                                                                                <?php $__currentLoopData = $subcategory['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                                    <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term"><?php echo e($subSubcategory->name); ?></a></li>
-                                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                            <?php endif; ?>
-                                                                        <?php endif; ?>
+                                  <ul>
+                                    <li class="nav-dropdown aro"><a href="#">SMART LED TV</a>
+                                      <ul>
+                                          <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                              <?php if($category['name']=='TELEVISION'): ?>
+
+                                                  <?php if(isset($category['children'])): ?>
+
+                                                      <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                          <?php if($subcategory['name']=='Smart LED TV'): ?>
+                                                              <?php $child = getChild($subcategory['id']) ?>
+                                                              <?php if(isset($child) && $child!=null): ?>
+                                                                  <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                      <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term"><?php echo e($subSubcategory->name); ?></a></li>
+                                                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                              <?php endif; ?>
+                                                          <?php endif; ?>
+                                                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                  <?php endif; ?>
+                                              <?php endif; ?>
+                                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                      </ul>
+
+                                      <li class="nav-dropdown aro"><a href="#">BASIC LED TV</a>
+                                          <ul>
+                                              <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                                  <?php if($category['name']=='TELEVISION'): ?>
+
+                                                      <?php if(isset($category['children'])): ?>
+
+                                                          <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                              <?php if($subcategory['name']=='Basic LED TV'): ?>
+                                                                  <?php $child = getChild($subcategory['id']) ?>
+                                                                  <?php if(isset($child) && $child!=null): ?>
+                                                                      <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                          <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term"><?php echo e($subSubcategory->name); ?></a></li>
+                                                                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                                  <?php endif; ?>
+                                                              <?php endif; ?>
+                                                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                      <?php endif; ?>
+                                                  <?php endif; ?>
+                                              <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                          </ul>
+                                      </li>
+                                  </ul>
+                                  </li>
+
+                                  <li class="nav-dropdown ">
+                                      <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                          <?php if($category['name']=='AIR CONDITIONAR'): ?>
+                                              <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="Digital & Electronics" class="link-term mercado-item-title">Air Conditioner</a>
+                                          <?php endif; ?>
+                                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                      <ul>
+                                         <li class="nav-dropdown aro"><a href="#">SPLITE TYPE</a>
+                                        <ul>
+                                            <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                                <?php if($category['name']=='AIR CONDITIONAR'): ?>
+
+                                                    <?php if(isset($category['children'])): ?>
+
+                                                        <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php if($subcategory['name']=='SPLITE TYPE'): ?>
+                                                                <?php $child = getChild($subcategory['id']) ?>
+                                                                <?php if(isset($child) && $child!=null): ?>
+                                                                    <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                        <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term"><?php echo e($subSubcategory->name); ?></a></li>
                                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                 <?php endif; ?>
                                                             <?php endif; ?>
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </ul>
+                                      </li>
 
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <h2 class="menu-title">BASIC LED TV</h2>
-                                                    <ul>
-                                                        <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            
-                                                            <?php if($category['name']=='TELEVISION'): ?>
-                                                            
-                                                                <?php if(isset($category['children'])): ?>
-                                                                    
-                                                                    <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                        <?php if($subcategory['name']=='Basic LED TV'): ?>
-                                                                            <?php if(isset($subcategory['children'])): ?>
-                                                                                <?php $__currentLoopData = $subcategory['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                                    <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term"><?php echo e($subSubcategory->name); ?></a></li>
-                                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                            <?php endif; ?>
-                                                                        <?php endif; ?>
+                                      <li class="nav-dropdown aro"><a href="#">CEILING MOUNTED TYPE</a>
+                                        <ul>
+                                            <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                                <?php if($category['name']=='AIR CONDITIONAR'): ?>
+
+                                                    <?php if(isset($category['children'])): ?>
+
+                                                        <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php if($subcategory['name']=='Ceiling Mounted Type'): ?>
+                                                                <?php $child = getChild($subcategory['id']) ?>
+                                                                <?php if(isset($child) && $child!=null): ?>
+                                                                    <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                        <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term"><?php echo e($subSubcategory->name); ?></a></li>
                                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                 <?php endif; ?>
                                                             <?php endif; ?>
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </ul>
+                                    </li>
+                                    <li class="nav-dropdown aro"><a href="#">CASSETTE TYPE</a>
+                                        <ul>
+                                            <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                            <li class="menu-item menu-item-has-children item-megamenu" >
-                                <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                      
-                                    <?php if($category['name']=='AIR CONDITIONAR'): ?>
-                                        <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="Digital & Electronics" class="link-term mercado-item-title">Air Conditioner</a>
-                                    <?php endif; ?>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?> 
-                                <div class="wrap-megamenu">
-                                    <div class="megamenu-content min-height-526 bg-air-Conditioner">
-                                        <div class="row">
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <h2 class="menu-title">SPLITE TYPE</h2>
-                                                    <ul>
-                                                        <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            
-                                                            <?php if($category['name']=='AIR CONDITIONAR'): ?>
-                                                            
-                                                                <?php if(isset($category['children'])): ?>
-                                                                    
-                                                                    <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                        <?php if($subcategory['name']=='SPLITE TYPE'): ?>
-                                                                            <?php if(isset($subcategory['children'])): ?>
-                                                                                <?php $__currentLoopData = $subcategory['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                                    <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term"><?php echo e($subSubcategory->name); ?></a></li>
-                                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                            <?php endif; ?>
-                                                                        <?php endif; ?>
+                                                <?php if($category['name']=='AIR CONDITIONAR'): ?>
+
+                                                    <?php if(isset($category['children'])): ?>
+
+                                                        <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                            <?php if($subcategory['name']=='CASSETTE TYPE'): ?>
+                                                                <?php $child = getChild($subcategory['id']) ?>
+                                                                <?php if(isset($child) && $child!=null): ?>
+                                                                    <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                        <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term"><?php echo e($subSubcategory->name); ?></a></li>
                                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                                 <?php endif; ?>
                                                             <?php endif; ?>
                                                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                                    <?php endif; ?>
+                                                <?php endif; ?>
+                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                        </ul>
+                                    </li>
+                                    </ul>
+                                  </li>
 
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <h2 class="menu-title">CEILING MOUNTED TYPE</h2>
-                                                    <ul>
-                                                        <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            
-                                                            <?php if($category['name']=='AIR CONDITIONAR'): ?>
-                                                            
-                                                                <?php if(isset($category['children'])): ?>
-                                                                    
-                                                                    <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                        <?php if($subcategory['name']=='Ceiling Mounted Type'): ?>
-                                                                            <?php if(isset($subcategory['children'])): ?>
-                                                                                <?php $__currentLoopData = $subcategory['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                                    <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term"><?php echo e($subSubcategory->name); ?></a></li>
-                                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                            <?php endif; ?>
-                                                                        <?php endif; ?>
-                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                <?php endif; ?>
-                                                            <?php endif; ?>
-                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                  <li class="nav-dropdown ">
+                                      <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                          <?php if($category['name']=='REFRIGERATOR'): ?>
+                                              <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="Digital & Electronics" class="link-term mercado-item-title">REFRIGERATORS</a>
+                                          <?php endif; ?>
+                                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <ul>
+                                        <ul>
+                                        </ul>
+                                        <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <h2 class="menu-title">CASSETTE TYPE</h2>
-                                                    <ul>
-                                                        <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            
-                                                            <?php if($category['name']=='AIR CONDITIONAR'): ?>
-                                                            
-                                                                <?php if(isset($category['children'])): ?>
-                                                                    
-                                                                    <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                        <?php if($subcategory['name']=='CASSETTE TYPE'): ?>
-                                                                            <?php if(isset($subcategory['children'])): ?>
-                                                                                <?php $__currentLoopData = $subcategory['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                                    <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term"><?php echo e($subSubcategory->name); ?></a></li>
-                                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                            <?php endif; ?>
-                                                                        <?php endif; ?>
-                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                <?php endif; ?>
-                                                            <?php endif; ?>
-                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="menu-item menu-item-has-children item-megamenu" >
-                                <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                      
-                                    <?php if($category['name']=='REFRIGERATOR'): ?>
-                                        <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="Digital & Electronics" class="link-term mercado-item-title">REFRIGERATORS</a>
-                                    <?php endif; ?>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                <div class="wrap-megamenu">
-                                    <div class="megamenu-content min-height-526 bg-menu-refrigerator">
-                                        <div class="row">
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <h2 class="menu-title">REFRIGERATOR</h2>
-                                                    <ul>
-                                                        <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            
-                                                            <?php if($category['name']=='REFRIGERATOR'): ?>
-                                                            
-                                                                <?php if(isset($category['children'])): ?>
-                                                                    
-                                                                    <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                        <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subcategory->id); ?>" class="link-term"><?php echo e($subcategory->name); ?></a></li>
-                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                <?php endif; ?>
-                                                            <?php endif; ?>
-                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                                            <?php if($category['name']=='REFRIGERATOR'): ?>
 
-                            <li class="menu-item menu-item-has-children item-megamenu" >
-                                <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                      
-                                    <?php if($category['name']=='FREEZER'): ?>
-                                        <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="Digital & Electronics" class="link-term mercado-item-title">FREEZER</a>
-                                    <?php endif; ?>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                <div class="wrap-megamenu">
-                                    <div class="megamenu-content min-height-526 bg-menu-refrigerator">
-                                        <div class="row">
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <h2 class="menu-title">FREEZER</h2>
-                                                    <ul>
-                                                        <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            
-                                                            <?php if($category['name']=='FREEZER'): ?>
-                                                            
-                                                                <?php if(isset($category['children'])): ?>
-                                                                    
-                                                                    <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                        <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subcategory->id); ?>" class="link-term"><?php echo e($subcategory->name); ?></a></li>
-                                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                <?php endif; ?>
-                                                            <?php endif; ?>
-                                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="menu-item menu-item-has-children item-megamenu" >
-                                <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                      
-                                    <?php if($category['name']=='HOME APPLIANCES'): ?>
-                                        <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="Digital & Electronics" class="link-term mercado-item-title">Home Appliance</a>
-                                    <?php endif; ?>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                <div class="wrap-megamenu">
-                                    <div class="megamenu-content min-height-526 bg-microwave-oven">
-                                        <div class="row">
+                                                <?php $child = getChild($category['id']) ?>
+                                                <?php if(isset($child) && $child != null): ?>
 
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            
-                                                        <?php if($category['name']=='HOME APPLIANCES'): ?>
-                                                        
-                                                            <?php if(isset($category['children'])): ?>
-                                                                
-                                                                <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                    <?php if(($subcategory->id)%3==0 && $subcategory->name!='Best Seller Home Appliance' && $subcategory->name!='New Arrivals Home Appliance' && $subcategory->name!='Top Rated Home Appliance'): ?>
-                                                                        <?php if(isset($subcategory['children'])): ?>
-                                                                            <?php $__currentLoopData = $subcategory['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                                <ul>
-                                                                                    <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term menu-title "><?php echo e($subSubcategory->name); ?></a></li>                                                                    
-                                                                                </ul>
-                                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                        <?php endif; ?>
-                                                                        <ul>
-                                                                            <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subcategory->id); ?>" class="link-term menu-title "><?php echo e($subcategory->name); ?></a></li>                                                                    
-                                                                        </ul>
-                                                                    <?php endif; ?>
+                                                    <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subcategory->id); ?>" class="link-term"><?php echo e($subcategory->name); ?></a></li>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </ul>
+                                  </li>
+
+                                  <li class="nav-dropdown ">
+                                      <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                          <?php if($category['name']=='FREEZER'): ?>
+                                              <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="Digital & Electronics" class="link-term mercado-item-title">FREEZER</a>
+                                          <?php endif; ?>
+                                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <ul>
+                                        <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                            <?php if($category['name']=='FREEZER'): ?>
+                                                <?php $child = getChild($category['id']) ?>
+
+                                                <?php if(isset($child) && $child!=null): ?>
+
+                                                    <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subcategory->id); ?>" class="link-term"><?php echo e($subcategory->name); ?></a></li>
+                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </ul>
+                                  </li>
+                                  <li class="nav-dropdown">
+                                      <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                          <?php if($category['name']=='HOME APPLIANCES'): ?>
+                                              <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="Digital & Electronics" class="link-term mercado-item-title">Home Appliance</a>
+                                          <?php endif; ?>
+                                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                  <ul>
+                                          <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                              <?php if($category['name']=='HOME APPLIANCES'): ?>
+                                              <?php  $childTop = getChild($category['id'])?>
+                                          <?php if(isset($childTop) && $childTop!=null): ?>
+                                                      <?php $__currentLoopData = $childTop; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                          <?php if($subcategory->name!='Best Seller Home Appliance' && $subcategory->name!='New Arrivals Home Appliance' && $subcategory->name!='Top Rated Home Appliance'): ?>
+                                                          <?php  $child = getChild($subcategory->id)?>
+                                                              <?php if(isset($child) && $child!=null): ?>
+                                                                  <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                          <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term menu-title "><?php echo e($subSubcategory->name); ?></a></li>
+                                                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                              <?php endif; ?>
+                                                                  <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subcategory->id); ?>" class="link-term menu-title "><?php echo e($subcategory->name); ?></a></li>
+                                                          <?php endif; ?>
+                                                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                  <?php endif; ?>
+                                              <?php endif; ?>
+                                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                  </ul>
+                                  </li>
+
+                                  <li class="nav-dropdown ">
+                                      <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                          <?php if($category['name']=='Accessories'): ?>
+                                              <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="Digital & Electronics" class="link-term mercado-item-title">Accessories</a>
+                                          <?php endif; ?>
+                                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    <ul>
+                                        <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+
+                                            <?php if($category['name']=='Accessories'): ?>
+                                                <?php $childTop = getChild($category['id']) ?>
+
+                                                <?php if(isset($childTop) && $childTop!=null): ?>
+
+                                                    <?php $__currentLoopData = $childTop; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                        <?php $child = getChild($subcategory->id) ?>
+                                                            <?php if(isset($child)): ?>
+                                                                <?php $__currentLoopData = $child; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                    <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term menu-title "><?php echo e($subSubcategory->name); ?></a></li>
                                                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                                             <?php endif; ?>
-                                                        <?php endif; ?>
+                                                                <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subcategory->id); ?>" class="link-term menu-title "><?php echo e($subcategory->name); ?></a></li>
                                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                </div>
-                                            </div>
+                                                <?php endif; ?>
+                                            <?php endif; ?>
+                                        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </ul>
+                                          <ul>
+                                              <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
 
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            
-                                                        <?php if($category['name']=='HOME APPLIANCES'): ?>
-                                                        
-                                                            <?php if(isset($category['children'])): ?>
-                                                                
-                                                                <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                <?php if(($subcategory->id)%3==1 && $subcategory->name!='Best Seller Home Appliance' && $subcategory->name!='New Arrivals Home Appliance' && $subcategory->name!='Top Rated Home Appliance'): ?>
-                                                                        <?php if(isset($subcategory['children'])): ?>
-                                                                            <?php $__currentLoopData = $subcategory['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                                <ul>
-                                                                                    <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term menu-title "><?php echo e($subSubcategory->name); ?></a></li>                                                                    
-                                                                                </ul>
-                                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                        <?php endif; ?>
-                                                                        <ul>
-                                                                            <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subcategory->id); ?>" class="link-term menu-title "><?php echo e($subcategory->name); ?></a></li>                                                                    
-                                                                        </ul>
-                                                                    <?php endif; ?>
-                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                            <?php endif; ?>
-                                                        <?php endif; ?>
-                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                </div>
-                                            </div>
+                                              <?php if($category['name']=='Accessories'): ?>
 
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            
-                                                        <?php if($category['name']=='HOME APPLIANCES'): ?>
-                                                        
-                                                            <?php if(isset($category['children'])): ?>
-                                                                
-                                                                <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                <?php if(($subcategory->id)%3==2 && $subcategory->name!='Best Seller Home Appliance' && $subcategory->name!='New Arrivals Home Appliance' && $subcategory->name!='Top Rated Home Appliance'): ?>
-                                                                        <?php if(isset($subcategory['children'])): ?>
-                                                                            <?php $__currentLoopData = $subcategory['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                                <ul>
-                                                                                    <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term menu-title "><?php echo e($subSubcategory->name); ?></a></li>                                                                    
-                                                                                </ul>
-                                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                        <?php endif; ?>
-                                                                        <ul>
-                                                                            <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subcategory->id); ?>" class="link-term menu-title "><?php echo e($subcategory->name); ?></a></li>                                                                    
-                                                                        </ul>
-                                                                    <?php endif; ?>
-                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                            <?php endif; ?>
-                                                        <?php endif; ?>
-                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                </div>
-                                            </div>
+                                                  <?php if(isset($category['children'])): ?>
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="menu-item menu-item-has-children item-megamenu" >
-                                <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>                      
-                                    <?php if($category['name']=='Accessories'): ?>
-                                        <a href="<?php echo e(url('')); ?>/products/<?php echo e($category->id); ?>" title="Digital & Electronics" class="link-term mercado-item-title">Accessories</a>
-                                    <?php endif; ?>
-                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                <div class="wrap-megamenu">
-                                    <div class="megamenu-content min-height-526 bg-Home-kitchen-appliancel">
-                                        <div class="row">
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            
-                                                        <?php if($category['name']=='Accessories'): ?>
-                                                        
-                                                            <?php if(isset($category['children'])): ?>
-                                                                
-                                                                <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                    <?php if(($subcategory->id)%2==1): ?>
-                                                                        <?php if(isset($subcategory['children'])): ?>
-                                                                            <?php $__currentLoopData = $subcategory['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                                <ul>
-                                                                                    <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term menu-title "><?php echo e($subSubcategory->name); ?></a></li>                                                                    
-                                                                                </ul>
-                                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                        <?php endif; ?>
-                                                                        <ul>
-                                                                            <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subcategory->id); ?>" class="link-term menu-title "><?php echo e($subcategory->name); ?></a></li>                                                                    
-                                                                        </ul>
-                                                                    <?php endif; ?>
-                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                            <?php endif; ?>
-                                                        <?php endif; ?>
-                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                </div>
-                                            </div>
-
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <?php $__currentLoopData = $allCategory; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $category): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                            
-                                                        <?php if($category['name']=='Accessories'): ?>
-                                                        
-                                                            <?php if(isset($category['children'])): ?>
-                                                                
-                                                                <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                    <?php if(($subcategory->id)%2==0): ?>
-                                                                        <?php if(isset($subcategory['children'])): ?>
-                                                                            <?php $__currentLoopData = $subcategory['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                                                                                <ul>
-                                                                                    <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term menu-title "><?php echo e($subSubcategory->name); ?></a></li>                                                                    
-                                                                                </ul>
-                                                                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                                        <?php endif; ?>
-                                                                        <ul>
-                                                                            <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subcategory->id); ?>" class="link-term menu-title "><?php echo e($subcategory->name); ?></a></li>                                                                    
-                                                                        </ul>
-                                                                    <?php endif; ?>
-                                                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                            <?php endif; ?>
-                                                        <?php endif; ?>
-                                                    <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                                                </div>
-                                            </div>
-
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
+                                                      <?php $__currentLoopData = $category['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                          <?php if(($subcategory->id)%2==0): ?>
+                                                              <?php if(isset($subcategory['children'])): ?>
+                                                                  <?php $__currentLoopData = $subcategory['children']; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $subSubcategory): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                                      <ul>
+                                                                          <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subSubcategory->id); ?>" class="link-term menu-title "><?php echo e($subSubcategory->name); ?></a></li>
+                                                                      </ul>
+                                                                  <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                              <?php endif; ?>
+                                                              <ul>
+                                                                  <li class="menu-item"><a href="<?php echo e(url('')); ?>/products/<?php echo e($subcategory->id); ?>" class="link-term menu-title "><?php echo e($subcategory->name); ?></a></li>
+                                                              </ul>
+                                                          <?php endif; ?>
+                                                      <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                                  <?php endif; ?>
+                                              <?php endif; ?>
+                                          <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                    </ul>
+                                  </li>
+                              </ul>
+                            </div>
+                          </nav>
                 </div>
-            </div>
         </div>
     </div>
 </header>
@@ -655,9 +838,10 @@
             <div class="container">
                 <ul>
                     <li class="fc-info-item">
-                        <i class="fa fa-truck" aria-hidden="true"></i>
                         <div class="wrap-left-info">
+                            <i class="fa fa-truck" aria-hidden="true"></i>
                             <h4 class="fc-name">Free Shipping</h4>
+                            <p class="fc-desc">At your doorstep</p>
                             
                         </div>
                     </li>
@@ -737,13 +921,11 @@
                             <div class="item-content">
                                 <div class="wrap-vertical-nav">
                                     <ul>
-                                        <?php if(Session::get('CustomerId')==''): ?>
-                                            <li class="menu-item"><a href="<?php echo e(url('')); ?>/customerLogin" class="link-term">My Account</a></li>
+                                        <?php if(auth()->guard('customer')->guest()): ?>
+                                            <li class="menu-item"><a href="<?php echo e(route('customer.login-form')); ?>" class="link-term">My Account</a></li>
                                         <?php else: ?>
                                             <li class="menu-item"><a href="<?php echo e(url('')); ?>/customer/customerInfomation" class="link-term">My Account</a></li> 
                                         <?php endif; ?>
-                                        
-                                        
                                     </ul>
                                 </div>
                             </div>
@@ -891,6 +1073,84 @@
         });
     });
 </script>
+            
+              <script id="rendered-js">
+              // on document ready
+              $(document).ready(function () {
+              
+                // show/hide the mobile menu based on class added to container
+                $('.menu-icon').click(function () {
+                  $(this).parent().toggleClass('is-tapped');
+                  $('#hamburger').toggleClass('open');
+                });
+              
+                // handle touch device events on drop down, first tap adds class, second navigates
+                $('.touch .sitenavigation li.nav-dropdown > a').on('touchend',
+                function (e) {
+                  if ($('.menu-icon').is(':hidden')) {
+                    var parent = $(this).parent();
+                    $(this).find('.clicked').removeClass('clicked');
+                    if (parent.hasClass('clicked')) {
+                      window.location.href = $(this).attr('href');
+                    } else {
+                      $(this).addClass('linkclicked');
+              
+                      // close other open menus at this level
+                      $(this).parent().parent().find('.clicked').removeClass('clicked');
+              
+                      parent.addClass('clicked');
+                      e.preventDefault();
+                    }
+                  }
+                });
+              
+                // handle the expansion of mobile menu drop down nesting
+                $('.sitenavigation li.nav-dropdown').click(
+                function (event) {
+                  if (event.stopPropagation) {
+                    event.stopPropagation();
+                  } else {
+                    event.cancelBubble = true;
+                  }
+              
+                  if ($('.menu-icon').is(':visible')) {
+                    $(this).find('> ul').toggle();
+                    $(this).toggleClass('expanded');
+                  }
+                });
+              
+              
+                // prevent links for propagating click/tap events that may trigger hiding/unhiding
+                $('.sitenavigation a.nav-dropdown, .sitenavigation li.nav-dropdown a').click(
+                function (event) {
+                  if (event.stopPropagation) {
+                    event.stopPropagation();
+                  } else {
+                    event.cancelBubble = true;
+                  }
+                });
+              
+              
+                // javascript fade in and out of dropdown menu
+                $('.no-touch .sitenavigation li').hover(
+                function () {
+                  if (!$('.menu-icon').is(':visible')) {
+                    $(this).find('> ul').fadeIn(100);
+                  }
+                },
+                function () {
+                  if (!$('.menu-icon').is(':visible')) {
+                    $(this).find('> ul').fadeOut(100);
+                  }
+                });
+              
+              });
+              
+                  </script>
+
+
+
+
  <!-- layerSlider -->
 
 

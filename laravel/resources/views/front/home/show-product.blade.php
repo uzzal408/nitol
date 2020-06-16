@@ -36,49 +36,9 @@
                                     @endif
                                 </div>
                             </div>
-
-                            {{-- <ul class="slides">
-                                @if($product->image1)
-                                    <li data-thumb="{{asset($product->image1)}}">
-                                        <img src="{{asset($product->image1)}}" alt="product thumbnail" width="380" height="150"/>
-                                    </li>
-                                @endif
-                                @if($product->image2)
-                                    <li data-thumb="{{asset($product->image2)}}">
-                                        <img src="{{asset($product->image2)}}" alt="product thumbnail" width="380" height="150"/>
-                                    </li>
-                                @endif
-                                @if($product->image3)
-                                    <li data-thumb="{{asset($product->image3)}}">
-                                        <img src="{{asset($product->image3)}}" alt="product thumbnail" width="380" height="150"/>
-                                    </li>
-                                @endif
-                                @if($product->image4)
-                                    <li data-thumb="{{asset($product->image4)}}">
-                                        <img src="{{asset($product->image4)}}" alt="product thumbnail" width="380" height="150"/>
-                                    </li>
-                                @endif
-                            </ul> --}}
                         </div>
                     </div>
                     <div class="detail-info">
-
-                        {{-- @if ($productReviewAvg>0)
-                            <div class="comment-text">
-                                <div class="comment-form-rating">
-                                    <p class="stars">
-                                        @for ($i = 1; $i <=$productReviewAvg; $i++)
-                                            <label for="rated-{{$i}}"></label>
-                                            <input type="radio" id="rated-{{$i}}" name="rating" value="{{$i}}" checked>
-                                        @endfor
-                                        ({{ $productReviewAvg}} Stars)
-                                    </p>
-                                </div>
-                            </div>
-                        @else
-                            <span class="count-review"><strong class="rating">{{$productReviewAvg}}</strong></span>
-                        @endif --}}
-
                         <form class="addToCart" action="#" method="post">
                             
                             @if ($productReviewAvg>0)
@@ -90,14 +50,7 @@
                                 </div>
                             @else
                             @endif
-                            {{-- <div class="product-rating">
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <i class="fa fa-star" aria-hidden="true"></i>
-                                <a href="#" class="count-review">({{$productReviewAvg}} review)</a>
-                            </div> --}}
+
                             
                             <h2 class="product-name">{{$product->title}}</h2>
                             <div class="short-desc">
@@ -108,10 +61,6 @@
                                     @endforeach
                                 </ul>
                             </div>
-                            
-                            {{-- <div class="wrap-social">
-                                <a class="link-socail" href="#"><img src="{{asset('/')}}client_end/images/social-list.png" alt=""></a>
-                            </div> --}}
 
                             <div class="wrap-price">
                                 @if($product->sale_price==0 && $product->discount==0)
@@ -149,16 +98,8 @@
                                     ?>
                                 @endif
 
-                                <div class="radio"> 
-                                
-                                    @if($product_price > 10001 && $product_price<30000)
-                                        0% EMI
-                                    
-                                        <label><input type="radio" name="optradio" checked onclick="emiAmount({{$product_price}},3)">3 Month</label>
-
-                                        <label><input type="radio" name="optradio" onclick="emiAmount({{$product_price}},6)">6 Month</label>
-                                    
-                                    @elseif( $product_price>30001)
+                                <div class="radio">
+                                    @if( $product_price>=10000)
                                     
                                         0% EMI
                                         
@@ -525,7 +466,7 @@
                                 <div class="product product-style-2 equal-elem ">
                                     <div class="product-thumnail">
                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
-                                            <figure><img src="{{asset($product->image1)}}"width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+                                            <figure><img src="{{asset($product->image1)}}"width="214" height="214" alt="{{$product->title}}"></figure>
                                         </a>
                                         <div class="group-flash">
                                             <span class="flash-item new-label">Releted Product</span>

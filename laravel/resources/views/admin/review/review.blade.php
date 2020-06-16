@@ -1,4 +1,7 @@
 @extends('admin.master')
+@section('title')
+    Nitol Admin || Reviews
+@endsection
         @section('body')
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -36,6 +39,7 @@
                 <!-- /.box-header -->
                 <div class="box-body table-responsive no-padding">
                     <table class="table table-hover">
+                        @if($productReviews!=null)
                         <tr>
                             <th>ID</th>
                             <th>Product Name</th>
@@ -61,6 +65,9 @@
                                 </td>
                             </tr>
                         @endforeach
+                            @else
+                            <h2>No Date is found</h2>
+                            @endif
                     </table>
                 </div>
                 <!-- /.box-body -->

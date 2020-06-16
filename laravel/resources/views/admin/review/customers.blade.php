@@ -1,4 +1,7 @@
 @extends('admin.master')
+@section('title')
+    Nitol Admin || Customers
+@endsection
         @section('body')
 <!-- Content Header (Page header) -->
 <section class="content-header">

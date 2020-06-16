@@ -216,6 +216,19 @@ class ProductController extends Controller
         return $imageUrl;
     }
 
+    public function publication($id){
+        $product = Product::find($id);
+        if($product->publication_status){
+            $product->publication_status = 0;
+        }else{
+            $product->publication_status = 1;
+        }
+        $product->save();
+
+        return redirect()->back();
+    }
+
+
 //    protected function allCategory(){
 //        $categories = DB::table('categories as c1')
 //            ->leftJoin('categories as c2','c2.parent_id','=','c1.id')

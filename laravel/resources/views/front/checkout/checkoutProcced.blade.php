@@ -9,10 +9,6 @@
 
     <div class="container">
         <div class="wrap-breadcrumb">
-            {{-- <ul>
-                <li class="item-link"><a href="#" class="link">home</a></li>
-                <li class="item-link"><span>login</span></li>
-            </ul> --}}
         </div>
 
         <div class=" main-content-area">
@@ -20,38 +16,60 @@
                 <div class="wrap-address-billing">
                     <h3 class="box-title">Billing Address</h3>
                     <p class="row-in-form" style="display: none"></p>
-                    <p class="row-in-form">
+                    <div class="row-in-form">
                         <label for="fname">first name<span>*</span></label>
-                        <input id="fname" type="text" name="fname" value="{{ isset($customerShoppingDetail->first_name) ? $customerShoppingDetail->first_name : '' }}" placeholder="Your name" required>
-                    </p>
-                    <p class="row-in-form">
+                        <input id="fname" type="text" name="fname" value="{{ isset($customerShoppingDetail->first_name) ? $customerShoppingDetail->first_name : '' }}" placeholder="Your name">
+                        @if($errors->has('fname'))
+                        <div class="alert alert-danger">{{ $errors->first('fname')  }}</div>
+                        @endif
+                    </div>
+                    <div class="row-in-form">
                         <label for="lname">last name<span>*</span></label>
-                        <input id="lname" type="text" name="lname" value="{{ isset($customerShoppingDetail->last_name) ? $customerShoppingDetail->last_name : '' }}" placeholder="Your last name" required>
-                    </p>
-                    <p class="row-in-form">
+                        <input id="lname" type="text" class="@error('lname') is-invalid @enderror" name="lname" value="{{ isset($customerShoppingDetail->last_name) ? $customerShoppingDetail->last_name : '' }}" placeholder="Your last name" required>
+                        @if($errors->has('lname'))
+                        <div class="alert alert-danger">{{ $errors->first('lname')  }}</div>
+                        @endif
+                    </div>
+                    <div class="row-in-form">
                         <label for="email">Email Addreess:</label>
-                        <input id="email" type="email" name="email" value="{{ isset($customerShoppingDetail->email) ? $customerShoppingDetail->email : '' }}" placeholder="Type your email">
-                    </p>
-                    <p class="row-in-form">
+                        <input id="email" class="@error('email') is-invalid @enderror" type="email" name="email" value="{{ isset($customerShoppingDetail->email) ? $customerShoppingDetail->email : '' }}" placeholder="Type your email">
+                        @if($errors->has('email'))
+                            <div class="alert alert-danger">{{ $errors->first('email')  }}</div>
+                        @endif
+                    </div>
+                    <div class="row-in-form">
                         <label for="phone">Phone number<span>*</span></label>
-                        <input id="phone" type="text" name="phone" value="{{ isset($customerShoppingDetail->phone) ? $customerShoppingDetail->phone : '' }}" placeholder="11 digits format" required>
-                    </p>
-                    <p class="row-in-form">
+                        <input id="phone"  class="@error('phone') is-invalid @enderror" type="text" name="phone" value="{{ isset($customerShoppingDetail->phone) ? $customerShoppingDetail->phone : '' }}" placeholder="11 digits format" required>
+                        @if($errors->has('phone'))
+                            <div class="alert alert-danger">{{ $errors->first('phone')  }}</div>
+                        @endif
+                    </div>
+
+                    <div class="row-in-form">
                         <label for="add">Address:<span>*</span></label>
-                        <input id="add" type="text" name="add" value="{{ isset($customerShoppingDetail->address) ? $customerShoppingDetail->address : '' }}" placeholder="Street at apartment number" required>
-                    </p>
-                    <p class="row-in-form">
+                        <input id="add"  class="@error('add') is-invalid @enderror"type="text" name="add" value="{{ isset($customerShoppingDetail->address) ? $customerShoppingDetail->address : '' }}" placeholder="Street at apartment number" required>
+                        @if($errors->has('add'))
+                            <div class="alert alert-danger">{{ $errors->first('add')  }}</div>
+                        @endif
+                    </div>
+                    <div class="row-in-form">
                         <label for="country">Country<span>*</span></label>
-                        <input id="country" type="text" name="country" value="{{ isset($customerShoppingDetail->country) ? $customerShoppingDetail->country : '' }}" placeholder="United States" required>
-                    </p>
-                    <p class="row-in-form">
+                        <input id="country" class="@error('country') is-invalid @enderror" type="text" name="country" value="{{ isset($customerShoppingDetail->country) ? $customerShoppingDetail->country : '' }}" placeholder="United States" >
+                        @if($errors->has('country'))
+                            <div class="alert alert-danger">{{ $errors->first('country')  }}</div>
+                        @endif
+                    </div>
+                    <div class="row-in-form">
                         <label for="zip-code">Postcode / ZIP:</label>
                         <input id="zip-code" type="number" name="zip_code" value="{{ isset($customerShoppingDetail->zip_code) ? $customerShoppingDetail->zip_code : '' }}" placeholder="Your postal code">
-                    </p>
-                    <p class="row-in-form">
+                    </div>
+                    <div class="row-in-form">
                         <label for="city">Town / City<span>*</span></label>
-                        <input id="city" type="text" name="city" value="{{ isset($customerShoppingDetail->town) ? $customerShoppingDetail->town : '' }}" placeholder="City name" required>
-                    </p>
+                        <input id="city" class="@error('city') is-invalid @enderror" type="text" name="city" value="{{ isset($customerShoppingDetail->town) ? $customerShoppingDetail->town : '' }}" placeholder="City name">
+                        @if($errors->has('city'))
+                            <div class="alert alert-danger">{{ $errors->first('city')  }}</div>
+                        @endif
+                    </div>
                     <p class="row-in-form fill-wife">
                         {{-- <label class="checkbox-field">
                             <input name="create-account" id="create-account" value="forever" type="checkbox">
@@ -67,68 +85,27 @@
                 <div class="summary summary-checkout">
                     <div class="summary-item payment-method">
                         <h4 class="title-box">Payment Method</h4>
-                        <!--<p class="summary-info"><span class="title">Check / Money order</span></p>-->
-                        <!--<p class="summary-info"><span class="title">Credit Card (saved)</span></p>-->
-                        <p class="summary-info"><span class="title">Pay Online</span></p>
                         <div class="choose-payment-methods">
                             <label class="payment-method">
-                                <input name="payment_method_ssl" id="payment-method-sslcommerz" value="sslcommerz" type="radio" checked>
+                                <input name="payment_method" id="payment-cash-on-delevery" value="cash-on-delivery" type="radio">
+                                <span>Cash On Delivery</span>
+                            </label>
+
+                            <p class="summary-info"><span class="title">Pay Online</span></p>
+                            <label class="payment-method">
+                                <input name="payment_method" id="payment-method-sslcommerz" value="sslcommerz" type="radio" checked>
                                 <span>Local or International Debit/Credit Card - Visa/Master/Amex or Nexus</span>
                                 <span class="payment-desc">You will able to pay for your products using local credit/debit cards like VISA, MasterCard, DBBL Nexus Card and any kind of credit card or bank accounts right from your online store.</span>
                             </label>
-                            
-                            <!--<label class="payment-method">-->
-                            <!--    <input name="payment-method" id="payment-method-bank" value="bank" type="radio">-->
-                            <!--    <span>Direct Bank Transfer</span>-->
-                            <!--    <span class="payment-desc">But the majority have suffered alteration in some form, by injected humour, or randomised words which don't look even slightly believable</span>-->
-                            <!--</label>-->
-
-                            {{-- <label class="payment-method">
-                                <input name="payment-method" id="payment-method-visa" value="visa" type="radio">
-                                <span>visa</span>
-                                <span class="payment-desc">There are many variations of passages of Lorem Ipsum available</span>
-                            </label>
-                            <label class="payment-method">
-                                <input name="payment-method" id="payment-method-paypal" value="paypal" type="radio">
-                                <span>Paypal</span>
-                                <span class="payment-desc">You can pay with your credit</span>
-                                <span class="payment-desc">card if you don't have a paypal account</span>
-                            </label> --}}
-
                         </div>
-                        
-                        {{-- <table>
-                            <thead>
-                                <th class="text-left"> Id</th>
-                                <th class="text-center"> Quantity</th>
-                                <th class="text-center">Name</th>
-                                <th class="text-center">Price (TK)</th>
-                                <th class="text-center">Action</th>
-                            </thead>
-                            <tbody>
-                                @php $cartProducts = Cart::content(); @endphp
-                                @foreach ($cartProducts as $key => $value)
-                                    <tr>
-                                        <td class="text-center"><p class="summary-info grand-total"><span class="grand-total-price">{{$value->id}}</span></p></td>
-                                        <td class="text-center"><p class="summary-info grand-total"><span class="grand-total-price">{{$value->qty}}</span></p></td>
-                                        <td class="text-center"><p class="summary-info grand-total"><span class="grand-total-price">{{$value->name}}</span></p></td>
-                                        <td class="text-center"><p class="summary-info grand-total"><span class="grand-total-price">{{$value->price}}</span></p></td>
-                                        <td class="text-center">
-                                            <a href="{{url('')}}/product/{{$value->id}}"> Edit </a>
-                                            <a href="{{url('')}}/cardDelete/{{$value->rowId}}"> Delete </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table> --}}
             
                         <p class="summary-info grand-total"><span>Grand Total</span> 
                             <span class="grand-total-price">
                                 {{filter_var(Cart::subtotal(),FILTER_SANITIZE_NUMBER_INT)/100 + $shippingCost->description}} TK
                             </span>
                         </p>
-                        @if (Session::get('CustomerId')=='')
-                            <button type="submit" class="btn btn-medium"><a title="Login" href="{{url('')}}/customerLogin" style="color:white">Place order</a></button>
+                        @guest('customer')
+                            <button type="submit" class="btn btn-medium"><a title="Login" href="{{ route('customer.login-form') }}" style="color:white">Place order</a></button>
                         @else
                             <button type="submit" class="btn btn-medium">Place order</button>
                         @endif
@@ -147,51 +124,6 @@
                     </div>
                 </div>
             {{Form::close()}}
-
-            {{-- <div class="wrap-iten-in-cart">
-                <h3 class="box-title">Products Detail</h3>
-                <ul class="products-cart">
-                    @php $cartProducts = Cart::content(); @endphp
-                    @foreach ($cartProducts as $key => $value)
-                        <li class="pr-cart-item">
-                            <div class="product-image">
-                                <a href="{{route('show-product',['id'=>$value->id])}}" title="">
-                                    <figure><img src="{{asset('/')}}/{{$value->options->image}}"alt=""></figure>
-                                </a>
-                            </div>
-                            <div class="product-name">
-                                <a class="link-to-product" href="#">{{$value->name}}</a>
-                            </div>
-                            <div class="price-field produtc-price"><p class="price"> {{$value->price}}</p></div>
-                            <div class="quantity">
-                                <div class="quantity-input">
-                                    <input type="text" name="product-quatity" value={{$value->qty}} data-max="120" pattern="[0-9]*" id="productQuantity">
-                                    <a class="btn btn-reduce" href="#"></a>
-                                    <a class="btn btn-increase" href="#"></a>
-                                </div>
-                            </div>
-                            <div class="price-field sub-total"><p class="price">{{$value->price*$value->qty}}</p></div>
-                            <div class="delete">
-                                <a href="{{url('')}}/cardDelete/{{$value->rowId}}"  title="">
-                                    <i class="fa fa-times-circle" aria-hidden="true"></i>
-                                </a>
-                            </div>
-                        </li>
-                    @endforeach
-                </ul>
-                
-                <div class="summary summary-checkout">
-                    <div class="summary-item payment-method">
-                        <p class="summary-info grand-total"><span>Grand Total</span> <span class="grand-total-price">{{Cart::subtotal()}} TK</span></p>
-                        @if (Session::get('CustomerId')=='')
-                            <button type="submit" class="btn btn-medium"><a title="Login" href="{{url('')}}/customerLogin" style="color:white">Proceed to Checkout</a></button>
-                        @else
-                            <button type="submit" class="btn btn-medium"><a title="Login" href="{{url('')}}/checkoutProceed" style="color:white">Proceed to Checkout</a></button>
-                        @endif
-                    </div>
-                </div>
-            </div> --}}
-
             <div class="wrap-show-advance-info-box style-1 box-in-site">
                 <h3 class="title-box">Most Viewed Products</h3>
                 <div class="wrap-products">
@@ -237,5 +169,13 @@
 @endsection
 @section('script')
     <script !src="">
+        $(document).ready(function(){
+            $("#payment-cash-on-delevery").click(function(){
+                document.getElementById('payment-method-sslcommerz').checked = false;
+            });
+            $("#payment-method-sslcommerz").click(function(){
+                document.getElementById('payment-cash-on-delevery').checked = false;
+            });
+        });
     </script>
 @endsection

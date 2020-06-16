@@ -1,4 +1,7 @@
 @extends('admin.master')
+@section('title')
+    Nitol Admin || New Products
+@endsection
 @section('stylesheet')
 <!-- bootstrap wysihtml5 - text editor -->
 <!-- <link rel="stylesheet" href="{{asset('/')}}admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"> -->

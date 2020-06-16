@@ -108,6 +108,7 @@
 
                                 <?php $__currentLoopData = $bestSellerAll; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$item_one): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php $__currentLoopData = $item_one; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php if($product->publication_status): ?>
                                         <div class="product product-style-2 equal-elem ">
                                             <div class="product-thumnail">
                                                 <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -151,6 +152,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </div>
@@ -166,6 +168,7 @@
 
                                 <?php $__currentLoopData = $newArrivalsAll; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$item_one): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php $__currentLoopData = $item_one; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php if($product->publication_status): ?>
                                         <div class="product product-style-2 equal-elem ">
                                             <div class="product-thumnail">
                                                 <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -210,6 +213,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                             </div>
@@ -225,6 +229,7 @@
 
                                 <?php $__currentLoopData = $topRatedAll; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$item_one): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                                     <?php $__currentLoopData = $item_one; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                        <?php if($product->publication_status): ?>
                                         <div class="product product-style-2 equal-elem ">
                                             <div class="product-thumnail">
                                                 <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -269,6 +274,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
 
@@ -285,7 +291,7 @@
             <div class="box-item wrap-show-advance-info-box style-1">
                 <h3 class="title-box">Television</h3>
                 <div class="wrap-top-banner">
-                    <a href="#" class="link-banner banner-effect-2">
+                    <a href="<?php echo e(url('products',$tvId)); ?> "class="link-banner banner-effect-2">
                         <figure><img src="<?php echo e(url('')); ?>/<?php echo e($bannerImageAll[0]->image); ?>" width="870" height="240" alt=""></figure>
                     </a>
                 </div>
@@ -312,6 +318,7 @@
                                         <?php if($category['name']=='TELEVISION'): ?>
                                             <?php $productIdTv            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdTv; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -346,6 +353,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                    <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -364,6 +372,7 @@
                                         <?php if($category['name']=='Best Seller TV'): ?>
                                             <?php $productIdTv            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdTv; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -400,6 +409,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -418,6 +428,7 @@
                                         <?php if($category['name']=='New Arrivals TV'): ?>
                                             <?php $productIdTv            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdTv; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -454,6 +465,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -472,6 +484,7 @@
                                         <?php if($category['name']=='Top Rated TV'): ?>
                                             <?php $productIdTv            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdTv; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -508,6 +521,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -528,6 +542,7 @@
                             <?php if($category['name']=='Best Seller TV'): ?>
                                 <?php $productIdTv            = $category->products; ?>
                                 <?php $__currentLoopData = $productIdTv; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($product->publication_status): ?>
                                     <?php if($key<5): ?>
                                         <li class="product-item">
                                             <div class="product product-widget-style">
@@ -565,6 +580,7 @@
                                             </div>
                                         </li>
                                     <?php endif; ?>
+                                    <?php endif; ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php if(count($productIdTv)>5): ?>
                                     <li class="funtion-item">
@@ -584,7 +600,7 @@
                 <h3 class="title-box">Air Conditioner <span class="ac_ton_calculation"><a href="<?php echo e(url('')); ?>/ac_ton_calculation">জেনে নিন আপনার রুমের জন্য কত টনের এসি প্রয়োজন</a></span></h3>
                 
                 <div class="wrap-top-banner">
-                    <a href="#" class="link-banner banner-effect-2">
+                    <a href="<?php echo e(url('products',$acId)); ?>" class="link-banner banner-effect-2">
                         <figure><img src="<?php echo e(url('')); ?>/<?php echo e($bannerImageAll[1]->image); ?>" width="870" height="240" alt=""></figure>
                     </a>
                 </div>
@@ -611,6 +627,7 @@
                                         <?php if($category['name']=='AIR CONDITIONAR'): ?>
                                             <?php $productIdAC            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdAC; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -637,6 +654,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -655,6 +673,7 @@
                                         <?php if($category['name']=='Best Seller AC'): ?>
                                             <?php $productIdAC            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdAC; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -683,6 +702,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -701,6 +721,7 @@
                                         <?php if($category['name']=='New Arrivals AC'): ?>
                                             <?php $productIdAC            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdAC; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -729,6 +750,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -747,6 +769,7 @@
                                         <?php if($category['name']=='Top Rated AC'): ?>
                                             <?php $productIdAC            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdAC; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -775,6 +798,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -795,6 +819,7 @@
                             <?php if($category['name']=='Best Seller AC'): ?>
                                 <?php $productIdAC            = $category->products; ?>
                                 <?php $__currentLoopData = $productIdAC; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($product->publication_status): ?>
                                     <?php if($key<5): ?>
                                         <li class="product-item">
                                             <div class="product product-widget-style">
@@ -824,6 +849,7 @@
                                             </div>
                                         </li>
                                     <?php endif; ?>
+                                    <?php endif; ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php if(count($productIdAC)>5): ?>
                                     <li class="funtion-item">
@@ -842,7 +868,7 @@
             <div class="box-item wrap-show-advance-info-box style-1">
                 <h3 class="title-box">Refrigerator</h3>
                 <div class="wrap-top-banner">
-                    <a href="#" class="link-banner banner-effect-2">
+                    <a href="<?php echo e(url('products',$rfgnId)); ?>" class="link-banner banner-effect-2">
                         <figure><img src="<?php echo e(url('')); ?>/<?php echo e($bannerImageAll[2]->image); ?>" width="870" height="240" alt=""></figure>
                     </a>
                 </div>
@@ -868,6 +894,7 @@
                                         <?php if($category['name']=='REFRIGERATOR'): ?>
                                             <?php $productIdFreeze            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdFreeze; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -902,6 +929,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -920,6 +948,7 @@
                                         <?php if($category['name']=='Best Seller Refregerator'): ?>
                                             <?php $productIdFreeze= $category->products; ?>
                                             <?php $__currentLoopData = $productIdFreeze; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -956,6 +985,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -974,6 +1004,7 @@
                                         <?php if($category['name']=='New Arrivals Refregerator'): ?>
                                             <?php $productIdFreeze            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdFreeze; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -1010,6 +1041,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1029,6 +1061,7 @@
                                         <?php if($category['name']=='Top Rated Refregerator'): ?>
                                             <?php $productIdFreeze            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdFreeze; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -1065,6 +1098,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1085,6 +1119,7 @@
                             <?php if($category['name']=='Best Seller Refregerator'): ?>
                                 <?php $productIdFreeze            = $category->products; ?>
                                 <?php $__currentLoopData = $productIdFreeze; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($product->publication_status): ?>
                                     <?php if($key<5): ?>
                                         <li class="product-item">
                                             <div class="product product-widget-style">
@@ -1122,6 +1157,7 @@
                                             </div>
                                         </li>
                                     <?php endif; ?>
+                                    <?php endif; ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php if(count($productIdFreeze)>5): ?>
                                     <li class="funtion-item">
@@ -1140,7 +1176,7 @@
             <div class="box-item wrap-show-advance-info-box style-1">
                 <h3 class="title-box">Frezeer</h3>
                 <div class="wrap-top-banner">
-                    <a href="#" class="link-banner banner-effect-2">
+                    <a href="<?php echo e(url('products',$freezerId)); ?>" class="link-banner banner-effect-2">
                         <figure><img src="<?php echo e(url('')); ?>/<?php echo e($bannerImageAll[2]->image); ?>" width="870" height="240" alt=""></figure>
                     </a>
                 </div>
@@ -1166,6 +1202,7 @@
                                         <?php if($category['name']=='FREEZER'): ?>
                                             <?php $productIdFreeze            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdFreeze; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -1200,6 +1237,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1218,6 +1256,7 @@
                                         <?php if($category['name']=='Best Seller Frezeer'): ?>
                                             <?php $productIdFreeze            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdFreeze; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -1254,6 +1293,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1272,6 +1312,7 @@
                                         <?php if($category['name']=='New Arrivals Frezeer'): ?>
                                             <?php $productIdFreeze            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdFreeze; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -1308,6 +1349,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1326,6 +1368,7 @@
                                         <?php if($category['name']=='Top Rated Frezeer'): ?>
                                             <?php $productIdFreeze            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdFreeze; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -1362,6 +1405,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1381,6 +1425,7 @@
                             <?php if($category['name']=='Best Seller Frezeer'): ?>
                                 <?php $productIdFreeze            = $category->products; ?>
                                 <?php $__currentLoopData = $productIdFreeze; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($product->publication_status): ?>
                                     <?php if($key<5): ?>
                                         <li class="product-item">
                                             <div class="product product-widget-style">
@@ -1418,6 +1463,7 @@
                                             </div>
                                         </li>
                                     <?php endif; ?>
+                                    <?php endif; ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php if(count($productIdFreeze)>5): ?>
                                     <li class="funtion-item">
@@ -1438,7 +1484,7 @@
             <div class="box-item wrap-show-advance-info-box style-1">
                 <h3 class="title-box">Home & Kitchen Appliance</h3>
                 <div class="wrap-top-banner">
-                    <a href="#" class="link-banner banner-effect-2">
+                    <a href="<?php echo e(url('products',$HAId)); ?>" class="link-banner banner-effect-2">
                         <figure><img src="<?php echo e(asset('/')); ?>/<?php echo e($bannerImageAll[3]->image); ?>" width="870" height="240" alt=""></figure>
                     </a>
                 </div>
@@ -1464,6 +1510,7 @@
                                         <?php if($category['name']=='HOME APPLIANCES'): ?>
                                             <?php $productIdHomeAppliance            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdHomeAppliance; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -1490,6 +1537,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1508,6 +1556,7 @@
                                         <?php if($category['name']=='Best Seller Home Appliance'): ?>
                                             <?php $productIdHomeAppliance            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdHomeAppliance; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -1536,6 +1585,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1554,6 +1604,7 @@
                                         <?php if($category['name']=='New Arrivals Home Appliance'): ?>
                                             <?php $productIdHomeAppliance            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdHomeAppliance; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -1582,6 +1633,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1600,6 +1652,7 @@
                                         <?php if($category['name']=='Top Rated Home Appliance'): ?>
                                             <?php $productIdHomeAppliance            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdHomeAppliance; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -1628,6 +1681,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1647,6 +1701,7 @@
                             <?php if($category['name']=='Best Seller Home Appliance'): ?>
                                 <?php $productIdHomeAppliance            = $category->products; ?>
                                 <?php $__currentLoopData = $productIdHomeAppliance; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($product->publication_status): ?>
                                     <?php if($key<5): ?>
                                         <li class="product-item">
                                             <div class="product product-widget-style">
@@ -1676,6 +1731,7 @@
                                             </div>
                                         </li>
                                     <?php endif; ?>
+                                    <?php endif; ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php if(count($productIdHomeAppliance)>5): ?>
                                     <li class="funtion-item">
@@ -1695,7 +1751,7 @@
             <div class="box-item wrap-show-advance-info-box style-1">
                 <h3 class="title-box">Accessories</h3>
                 <div class="wrap-top-banner">
-                    <a href="#" class="link-banner banner-effect-2">
+                    <a href="<?php echo e(url('products',$accessoriesId)); ?>" class="link-banner banner-effect-2">
                         <figure><img src="<?php echo e(asset('/')); ?>/<?php echo e($bannerImageAll[3]->image); ?>" width="870" height="240" alt=""></figure>
                     </a>
                 </div>
@@ -1721,6 +1777,7 @@
                                         <?php if($category['name']=='Accessories'): ?>
                                             <?php $productIdAccessories            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdAccessories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -1747,6 +1804,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1765,6 +1823,7 @@
                                         <?php if($category['name']=='Best Seller Accessories'): ?>
                                             <?php $productIdAccessories            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdAccessories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -1793,6 +1852,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1811,6 +1871,7 @@
                                         <?php if($category['name']=='New Arrivals Accessories'): ?>
                                             <?php $productIdAccessories            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdAccessories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -1839,6 +1900,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1857,6 +1919,7 @@
                                         <?php if($category['name']=='Top Rated Accessories'): ?>
                                             <?php $productIdAccessories            = $category->products; ?>
                                             <?php $__currentLoopData = $productIdAccessories; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                                <?php if($product->publication_status): ?>
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
@@ -1885,6 +1948,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <?php endif; ?>
                                             <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                         <?php endif; ?>
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
@@ -1904,6 +1968,7 @@
                             <?php if($category['name']=='Best Seller Home Appliance'): ?>
                                 <?php $productIdHomeAppliance            = $category->products; ?>
                                 <?php $__currentLoopData = $productIdHomeAppliance; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $key=>$product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                                    <?php if($product->publication_status): ?>
                                     <?php if($key<5): ?>
                                         <li class="product-item">
                                             <div class="product product-widget-style">
@@ -1932,6 +1997,7 @@
                                                 </div>
                                             </div>
                                         </li>
+                                    <?php endif; ?>
                                     <?php endif; ?>
                                 <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 <?php if(count($productIdHomeAppliance)>5): ?>

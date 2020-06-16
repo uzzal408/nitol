@@ -46,13 +46,14 @@
 
                     <ul class="product-list grid-products equal-container">
                         <?php $__currentLoopData = $products; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $product): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php if($product->publication_status): ?>
                             <li class="col-lg-4 col-md-6 col-sm-6 col-xs-6 ">
                                 <div class="product product-style-3 equal-elem ">
                                     <div class="product-thumnail">
-                                        <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="T-Shirt Raw Hem Organic Boro Constrast Denim">
+                                        <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
                                             <figure>
                                                 <?php if($product->image1): ?>
-                                                    <img src="<?php echo e(asset($product->image1)); ?>" width="800" height="800" alt="T-Shirt Raw Hem Organic Boro Constrast Denim">
+                                                    <img src="<?php echo e(asset($product->image1)); ?>" width="800" height="800" alt="<?php echo e($product->title); ?>">
                                                 <?php else: ?>
                                                     <img src="https://via.placeholder.com/511x357" width="800" height="800" style="width:100%">
                                                 <?php endif; ?>
@@ -91,6 +92,7 @@
                                     </div>
                                 </div>
                             </li>
+                            <?php endif; ?>
                         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                     </ul>
                 </div>

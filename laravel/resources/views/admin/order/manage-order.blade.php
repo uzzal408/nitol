@@ -1,5 +1,8 @@
 
 @extends('admin.master')
+@section('title')
+    Nitol Admin || Manage Orders
+@endsection
 @section('body')
 <!-- Main content -->
 <section class="content">

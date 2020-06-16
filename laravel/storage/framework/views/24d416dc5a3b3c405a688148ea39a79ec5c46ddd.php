@@ -1,3 +1,6 @@
+<?php $__env->startSection('title'); ?>
+    Nitol Admin || Manage Orders
+<?php $__env->stopSection(); ?>
 <?php $__env->startSection('body'); ?>
 <!-- Main content -->
 <section class="content">

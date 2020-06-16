@@ -9,19 +9,9 @@
 
 
     <div class="container">
-
-        {{-- <div class="wrap-breadcrumb">
-            <ul>
-                <li class="item-link"><a href="#" class="link">home</a></li>
-                <li class="item-link"><span>Digital & Electronics</span></li>
-            </ul>
-        </div> --}}
         <div class="row">
-
             <div class="summary-item payment-method"><br>
-                @if (Session::get('CustomerId')!='')
-                    <button type="submit" class="btn btn-medium"><a title="My Prifile" href="{{url('')}}/customerProfile/{{Session::get('CustomerId')}}" style="color:white">My Profile</a></button>
-                @endif
+                    <button type="submit" class="btn btn-medium"><a title="My Prifile" href="{{url('')}}/customerProfile/{{ Auth::guard('customer')->user()->id }}" style="color:white">My Profile</a></button>
             </div><br>
             <div class="table-responsive">
                 <table class="table no-margin">

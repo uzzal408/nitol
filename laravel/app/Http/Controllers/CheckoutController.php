@@ -38,14 +38,18 @@ class CheckoutController extends Controller{
     }
 
     public function saveOrderInfo(Request $request){
-//        dd($request->all());
+        $request->validate([
+            'fname'     => 'required|string',
+            'email'     => 'required|email',
+            'phone'     => 'required|digits:11',
+            'add'       => 'required|string',
+            'country'   => 'required|string',
+            'city'      => 'required|string',
+        ]);
 
-        //        return $request;
         //****************Card & CardDetail******************//
-
         $grand_total        = Cart::subtotal();//Session::get('grandTotal');
-        //dd($grand_total);
-        $customer_id        = Session::get('CustomerId');
+        $customer_id        = Auth::guard('customer')->user()->id;
         $store_id           = Session::get('StoreID');
         $order_type         = Session::get('Mode');
         $shippingCost       = Category::where(['name' => 'Shipping Cost'])->first();
@@ -59,7 +63,8 @@ class CheckoutController extends Controller{
         $order->country     = $request->country;
         $order->zip_code    = $request->zip_code;
         $order->city        = $request->city;
-        
+        $order->payment_method  = $request->payment_method;
+
         if($customer_id){
             $order->customer_login_id = $customer_id;
         }
@@ -74,7 +79,6 @@ class CheckoutController extends Controller{
         $cartProducts = Cart::content();
         if ($cartProducts) {
             foreach ($cartProducts as $cartProduct) {
-                //dd($cartProduct->price);
                 $orderDetails = new OrderDetail();
                 $orderDetails->order_id = $orderId;
                 $orderDetails->product_id = $cartProduct->options->product_id;
@@ -119,18 +123,18 @@ class CheckoutController extends Controller{
             'total' => $grand_total
         );
 
-        Mail::to('hossenismail29@gmail.com')->send(new ConfirmOrderMail($cartProduct,$info));
+        Mail::to('badhon@gmail.com')->send(new ConfirmOrderMail($cartProducts,$info));
         
         // exit;
         $post_data = array();
 
-//        $post_data['store_id'] = $this->config['apiCredentials']['store_id'];
+        $post_data['store_id'] = $this->config['apiCredentials']['store_id'];
 //        dd($post_data['store_id']);
-//        $post_data['store_passwd'] = $this->config['apiCredentials']['store_password'];
+        $post_data['store_passwd'] = $this->config['apiCredentials']['store_password'];
 //        dd($post_data['store_passwd']);
 
-        $post_data['store_id'] = "testbox";
-        $post_data['store_passwd'] = "qwerty";
+//        $post_data['store_id'] = "testbox";
+//        $post_data['store_passwd'] = "qwerty";
 
 //        define("SSLCZ_STORE_ID", "testbox");
 //        define("SSLCZ_STORE_PASSWD", "qwerty");
@@ -174,10 +178,10 @@ class CheckoutController extends Controller{
         $post_data['product_profile'] = "physical-goods";
         $post_data['num_of_item'] = $i;
 
-        // if($request->payment_method_sslc == "sslcommerz")
-        // {
-//            $get_api_url = $this->config['apiDomain'] . $this->config['apiUrl']['make_payment'];
-            $get_api_url = "https://" . "sandbox" . ".sslcommerz.com/gwprocess/v3/api.php";;
+         if($request->payment_method == "sslcommerz")
+         {
+            $get_api_url = $this->config['apiDomain'] . $this->config['apiUrl']['make_payment'];
+//            $get_api_url = "https://" . "sandbox" . ".sslcommerz.com/gwprocess/v3/api.php";;
 //            dd($get_api_url);
             //dd($get_api_url);
             $handle = curl_init();
@@ -216,11 +220,12 @@ class CheckoutController extends Controller{
             } else {
             	echo "JSON Data parsing error!";
             }
-        // }
-        // else
-        // {
-        //     return redirect()->route('complete-order');
-        // }
+         }
+         else
+         {
+             Cart::destroy();
+             return redirect()->route('complete-order');
+         }
         
         // return redirect()->route('complete-order');
     }

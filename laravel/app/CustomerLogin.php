@@ -2,10 +2,19 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
-class CustomerLogin extends Model
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class CustomerLogin extends Authenticatable
 {
+    use Notifiable;
+
+    protected $fillable = ['name', 'email','dateOfBirth','nidNumber','present_aadress','image','provider','provider_id', 'password',];
+
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
     public function orderDetails()
     {
         return $this->hasMany('App\OrderDetail');

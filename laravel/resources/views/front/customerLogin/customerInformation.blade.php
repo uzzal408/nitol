@@ -9,13 +9,6 @@
 @section('body')
 
     <div class="container">
-
-        {{-- <div class="wrap-breadcrumb">
-            <ul>
-                <li class="item-link"><a href="#" class="link">home</a></li>
-                <li class="item-link"><span>Digital & Electronics</span></li>
-            </ul>
-        </div> --}}
         <div class="row">
 
             <div class="wrap-address-billing">
@@ -50,9 +43,7 @@
             </div>
 
             <div class="summary-item payment-method">
-                @if (Session::get('CustomerId')!='')
-                    <button type="submit" class="btn btn-medium"><a title="Edit Prifile" href="{{url('')}}/customerProfileEdit/{{Session::get('CustomerId')}}" style="color:white">Edit Profile</a></button>
-                @endif
+                    <button type="submit" class="btn btn-medium"><a title="Edit Prifile" href="{{url('')}}/customerProfileEdit/{{ Auth::guard('customer')->user()->id }}" style="color:white">Edit Profile</a></button>
             </div>
         </div><!--end row-->
 

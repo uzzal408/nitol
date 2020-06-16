@@ -14,13 +14,15 @@ use App\Category;
 use App\Customer;
 use App\Product;
 use App\Store;
+use App\Helpers\HelperClass;
 
 
 class NitolElectronicsController extends Controller
 {
 
     public function index(){
-        $allCategory = Category::all();
+        $allCategory = Category::orderBy('id','asc')->get();
+
 
         //////// Header, Banner, Slider, Header Right Image ///////
         $sliderImage            = Category::where(['name' => 'Slider Image'])->first();
@@ -105,7 +107,15 @@ class NitolElectronicsController extends Controller
 
         $topRatedHA             = Category::where(['name' => 'Top Rated Home Appliance'])->first();
         $topRatedHAAll          = $topRatedHA->products;  
-        $topRatedAll[]          = $topRatedHAAll;  
+        $topRatedAll[]          = $topRatedHAAll;
+
+//        $tvId = Category::where('name','TELEVISION')->select('id','name')->first();
+        $acId = HelperClass::categoryIdByName('AIR CONDITIONAR');
+        $tvId = HelperClass::categoryIdByName('TELEVISION');
+        $rfgnId = HelperClass::categoryIdByName('REFRIGERATOR');
+        $freezerId = HelperClass::categoryIdByName('FREEZER');
+        $HAId = HelperClass::categoryIdByName('HOME APPLIANCES');
+        $accessoriesId = HelperClass::categoryIdByName('Accessories');
 
         ////// Footer Information ///////////
         $companyOverview        = Category::where(['name' => 'Company Overview'])->first();
@@ -117,7 +127,7 @@ class NitolElectronicsController extends Controller
         'sliderImageAll','bannerImageAll','bestSellerTvAll','newArrivalsTvAll','topRatedTvAll',
         'bestSellerACAll','newArrivalsACAll','topRatedACAll','bestSellerFreezeAll','bestSellerRefregeratorAll','newArrivalsRefregeratorAll','topRatedRefregeratorAll','newArrivalsFreezeAll',
         'topRatedFreezeAll','bestSellerHAll','newArrivalsHAAll','topRatedHAAll','headerRightImageAll',
-        'bestSellerAll','newArrivalsAll','topRatedAll','companyOverview','youtubeLinkAll','allCategory']));
+        'bestSellerAll','newArrivalsAll','topRatedAll','companyOverview','youtubeLinkAll','allCategory','tvId','acId','rfgnId','freezerId','HAId','accessoriesId']));
     }
 
     public function showProduct($id){
@@ -592,6 +602,14 @@ class NitolElectronicsController extends Controller
     public function aboutUs(){
         return view('front.static-pages.about-us');
     }
+    public function privacy(){
+        $allCategory        = Category::all();
+        $divisionRoot       = Category::where(['name' => 'Store Locator'])->first();
+        $divisionAll        = Category::where(['parent_id' =>$divisionRoot->id])->orderBy('name','asc')->get();
+
+//        return view('front.static-pages.serviceCenter',compact(['divisionAll','allCategory']));
+        return view('front.static-pages.privacy',compact(['divisionAll','allCategory']));
+    }
 
     public function storeLocator($id = null){
         //dd($id);
@@ -650,7 +668,6 @@ class NitolElectronicsController extends Controller
 
     public function serviceCenter(){
         $allCategory        = Category::all();
-
         $divisionRoot       = Category::where(['name' => 'Store Locator'])->first();
         $divisionAll        = Category::where(['parent_id' =>$divisionRoot->id])->orderBy('name','asc')->get();
 

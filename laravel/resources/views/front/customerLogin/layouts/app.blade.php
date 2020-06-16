@@ -26,9 +26,6 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                {{-- <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Nitol') }}
-                </a> --}}
                 <aside class="col-md-2">
                     <a href="{{url('/')}}" class="careerfy-logo">
                         <img src="{{url('/')}}/client_end/images/logo-top-1.png" alt="mercado">
@@ -43,17 +40,16 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="careerfy-color nav-link" href="{{url('')}}/customerLogin">{{ __('Login') }}</a>
+                                <a class="careerfy-color nav-link" href="{{route('customer.login-form')}}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="careerfy-color nav-link" href="{{url('')}}/customer/register">{{ __('Register') }}</a>
+                                    <a class="careerfy-color nav-link" href="{{route("customer.registration-form")}}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else

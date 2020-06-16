@@ -71,8 +71,8 @@
                 <div class="summary summary-checkout">
                     <div class="summary-item payment-method">
                         <p class="summary-info grand-total"><span>Grand Total</span> <span class="grand-total-price" id="grandTotalBase">{{Cart::subtotal()}} TK</span></p>
-                        @if (Session::get('CustomerId')=='')
-                            <button type="submit" class="btn btn-medium"><a title="Login" href="{{url('')}}/customerLogin" style="color:white">Proceed to Checkout</a></button>
+                       @guest('customer')
+                            <button type="submit" class="btn btn-medium"><a title="Login" href="{{ route('customer.login-form') }}" style="color:white">Proceed to Checkout</a></button>
                         @else
                             <!--<form method="POST" action="{{url('')}}/paymentMethod">-->
                             <!--    @csrf()-->

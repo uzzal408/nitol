@@ -26,7 +26,6 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
-                
                 <aside class="col-md-2">
                     <a href="<?php echo e(url('/')); ?>" class="careerfy-logo">
                         <img src="<?php echo e(url('/')); ?>/client_end/images/logo-top-1.png" alt="mercado">
@@ -41,17 +40,16 @@
                     <ul class="navbar-nav mr-auto">
 
                     </ul>
-
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <?php if(auth()->guard()->guest()): ?>
                             <li class="nav-item">
-                                <a class="careerfy-color nav-link" href="<?php echo e(url('')); ?>/customerLogin"><?php echo e(__('Login')); ?></a>
+                                <a class="careerfy-color nav-link" href="<?php echo e(route('customer.login-form')); ?>"><?php echo e(__('Login')); ?></a>
                             </li>
                             <?php if(Route::has('register')): ?>
                                 <li class="nav-item">
-                                    <a class="careerfy-color nav-link" href="<?php echo e(url('')); ?>/customer/register"><?php echo e(__('Register')); ?></a>
+                                    <a class="careerfy-color nav-link" href="<?php echo e(route("customer.registration-form")); ?>"><?php echo e(__('Register')); ?></a>
                                 </li>
                             <?php endif; ?>
                         <?php else: ?>

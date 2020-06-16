@@ -1,7 +1,10 @@
 @extends('admin.master')
+@section('title')
+    Nitol Admin || Products
+@endsection
         @section('body')
-<!-- Content Header (Page header) -->
-<section class="content-header">
+            <!-- Content Header (Page header) -->
+            <section class="content-header">
     <h1>
         All Products
         <small>Preview</small>
@@ -25,7 +28,6 @@
                     <div class="box-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
                             <input type="text" name="table_search" class="form-control pull-right" placeholder="Search">
-
                             <div class="input-group-btn">
                                 <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                             </div>
@@ -33,64 +35,63 @@
                     </div>
                 </div>
                 <!-- /.box-header -->
-                <div class="box-body table-responsive no-padding">
-                    <table class="table table-hover">
+                <div class="box-body">
+                    <table class="table" id="#test">
                         <tr>
                             <th>Image1</th>
-                            <th>Image2</th>
-                            <th>Image3</th>
-                            <th>Image4</th>
                             <th>Name</th>
-                            <th>AC Capacity</th>
-                            <th>Screen Size</th>
-                            <th>Refrezarator Capacity</th>
                             <th>Price</th>
                             <th>Sale Price</th>
                             <th>Discount</th>
                             <th>Quantity</th>
-                            <th>Description</th>
-                            <th>Categories</th>
-                            <th>Specification</th>
+{{--                            <th>Categories</th>--}}
+{{--                            <th>Specification</th>--}}
                             <th>Action</th>
                         </tr>
                         @foreach($products as $product)
                             @php($specifications = explode(',', $product->specification))
                             <tr>
                                 <td><img src="{{$product->image1}}" alt="{{$product->name1}}" height="48" width="48"></td>
-                                <td><img src="{{$product->image2}}" alt="{{$product->name2}}" height="48" width="48"></td>
-                                <td><img src="{{$product->image3}}" alt="{{$product->name3}}" height="48" width="48"></td>
-                                <td><img src="{{$product->image4}}" alt="{{$product->name4}}" height="48" width="48"></td>
-                                <td>{{$product->title}}</td>
-                                <td>{{$product->ac_capacity}}</td>
-                                <td>{{$product->screen_size}}</td>
-                                <td>{{$product->capacity_litre}}</td>
+                                <td>{{$product->title}}
+                                    @if($product->ac_capacity!=null)
+                                        {{$product->ac_capacity}} TON
+                                    @endif
+
+                                    @if($product->screen_size!=null)
+                                        {{$product->screen_size}}"
+                                    @endif
+
+                                    @if($product->capacity_litre!=null)
+                                        {{$product->capacity_litre}} Ltr
+                                    @endif
+                                </td>
                                 <td>{{$product->price}}</td>
                                 <td>{{$product->sale_price}}</td>
                                 <td>{{$product->discount}}</td>
                                 <td>{{$product->quantity}}</td>
-                                <td>{!!$product->description!!}</td>
+{{--                                <td>--}}
+{{--                                    <ul>--}}
+{{--                                        @foreach($product->categories as $category)--}}
+{{--                                            <li>{{$category->name}}</li>--}}
+{{--                                        @endforeach--}}
+{{--                                    </ul>--}}
+{{--                                </td>--}}
+{{--                                <td>--}}
+{{--                                    <ul>--}}
+{{--                                        @foreach($specifications as $category)--}}
+{{--                                            <li>{{$category}}</li>--}}
+{{--                                        @endforeach--}}
+{{--                                    </ul>--}}
+{{--                                </td>--}}
+{{--                                <td>--}}
+{{--                                    <ul>--}}
+{{--                                        @foreach($product->ingredients as $category)--}}
+{{--                                            <li>{{$category->name}}</li>--}}
+{{--                                        @endforeach--}}
+{{--                                    </ul>--}}
+{{--                                </td>--}}
                                 <td>
-                                    <ul>
-                                        @foreach($product->categories as $category)
-                                            <li>{{$category->name}}</li>
-                                        @endforeach
-                                    </ul>
-                                </td>
-                                <td>
-                                    <ul>
-                                        @foreach($specifications as $category)
-                                            <li>{{$category}}</li>
-                                        @endforeach
-                                    </ul>
-                                </td>
-                                <td>
-                                    <ul>
-                                        @foreach($product->ingredients as $category)
-                                            <li>{{$category->name}}</li>
-                                        @endforeach
-                                    </ul>
-                                </td>
-                                <td>
+                                    <a href="{{ route('publication-product',$product->id) }}" class="btn btn-xs {{ ($product->publication_status) ? 'btn-info' : 'btn-danger' }}" onclick="return confirm('Are You Sure?')"><span class="glyphicon glyphicon-ok"></span></a>
                                     <a href="{{route('edit-product',['id'=>$product->id])}}" class="btn btn-info btn-xs"><span class="glyphicon glyphicon-edit"></span></a>
                                     <a
                                     class="btn btn-danger btn-xs"
@@ -114,9 +115,4 @@
 <!-- /.content -->
 @endsection
 @section('scripts')
-    <script !src="">
-        $(document).ready(function () {
-
-        });
-    </script>
 @endsection

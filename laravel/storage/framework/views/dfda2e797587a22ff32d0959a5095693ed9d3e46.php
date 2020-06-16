@@ -76,12 +76,8 @@
                 <?php ($billing_details = $order->billing_detail); ?>
                 <address>
                     <?php if($billing_details): ?>
-                        
-                        
-                        
                         Payment Type: <?php echo e($billing_details->payment_type); ?> <br>
                         Payment Status: <?php echo e($billing_details->payment_status); ?>
-
                     <?php endif; ?>
                 </address>
             </div>

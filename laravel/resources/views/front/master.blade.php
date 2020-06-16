@@ -1,10 +1,11 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="csrf-token" content="{{ csrf_token() }}" />
+    <meta name="csrf-token" content="{{ csrf_token() }}"/>
     <title>Nitol Electronics</title>
     <link rel="shortcut icon" href="{{asset('/')}}client_end/images/fav.png" />
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,400italic,700,700italic,900,900italic&amp;subset=latin,latin-ext" rel="stylesheet">
@@ -26,7 +27,6 @@
     <!-- layerSlider -->
 
     <!-- xzoom plugin here -->
-	{{-- <link rel="stylesheet" type="text/css" href="{{asset('/')}}client_end/css/xZoom/foundation.css"/> --}}
 	<script src="{{asset('/')}}client_end/js/xZoom/jquery.js"></script>
 	<script src="{{asset('/')}}client_end/js/xZoom/setup.js"></script>
    	<script type="text/javascript" src="{{asset('/')}}client_end/js/xZoom/xzoom.min.js"></script>
@@ -34,6 +34,9 @@
     <!-- xzoom plugin here -->
 
     @yield('stylesheet')
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" type="text/javascript"></script>
+    
 </head>
 
 
@@ -64,16 +67,325 @@
         var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(s, x);
     })();
 </script>
-
-{{--<body class="home-page home-03">--}}
-
 <div class="mercado-clone-wrap">
     <div class="mercado-panels-actions-wrap">
         <a class="mercado-close-btn mercado-close-panels" href="#">x</a>
     </div>
-    <div class="mercado-panels"></div>
-</div>
+    <div class="mercado-panels">
+        <div class="nav-section ">
+            <div class="primary-nav-section">
+                <div class="container">
+                    <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu" >
+                        <li class="menu-item home-icon">
+                            <a href="{{ url('/') }}" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
+                        </li>
+                            <li class="menu-item menu-item-has-children item-megamenu">
+                                @foreach($allCategory as $category)
+                                    @if ($category['name']=='TELEVISION')
+                                        <a href="{{url('')}}/products/{{$category->id}}" title="TELEVISION" class="link-term mercado-item-title">Television</a>
+                                    @endif
+                                @endforeach
+                                    <div class="wrap-megamenu">
+                                        <div class="megamenu-content min-height-526 bg-digital-electronic">
+                                            <div class="row">
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <h2 class="menu-title"><a href="#">SMART LED TV</a></h2>
+                                                            <ul>
+                                                            @foreach($allCategory as $category)
+                                                                    @if ($category['name']=='TELEVISION')
+                                                                        @if(isset($category['children']))
 
+                                                        @foreach($category['children'] as $subcategory)
+                                                            @if ($subcategory['name']=='Smart LED TV')
+                                                                @php $child = getChild($subcategory['id']) @endphp
+                                                                @if(isset($child) && $child!=null)
+                                                                    @foreach($child as $subSubcategory)
+                                                                        <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term">{{$subSubcategory->name}}</a></li>
+                                                                    @endforeach
+                                                                @endif
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <h2 class="menu-title"><a href="#">BASIC LED TV</a></h2>
+                                                        <ul>
+                                            @foreach($allCategory as $category)
+
+                                                @if ($category['name']=='TELEVISION')
+
+                                                    @if(isset($category['children']))
+
+                                                        @foreach($category['children'] as $subcategory)
+                                                            @if ($subcategory['name']=='Basic LED TV')
+                                                                @php $child = getChild($subcategory['id']) @endphp
+                                                                @if(isset($child) && $child!=null)
+                                                                    @foreach($child as $subSubcategory)
+                                                                        <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term">{{$subSubcategory->name}}</a></li>
+                                                                    @endforeach
+                                                                @endif
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </li>
+
+                            <li class="menu-item menu-item-has-children item-megamenu">
+                                @foreach($allCategory as $category)
+                                    @if ($category['name']=='AIR CONDITIONAR')
+                                        <a href="{{url('')}}/products/{{$category->id}}" title="AIR CONDITIONAR" class="link-term mercado-item-title">Air Conditioner</a>
+                                    @endif
+                                @endforeach
+
+                                    <div class="wrap-megamenu">
+                                        <div class="megamenu-content min-height-526 bg-digital-electronic">
+                                            <div class="row">
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <h2 class="menu-title"><a href="#">SPLITE TYPE</a></h2>
+                                                <ul>
+                                            @foreach($allCategory as $category)
+
+                                                @if ($category['name']=='AIR CONDITIONAR')
+
+                                                    @if(isset($category['children']))
+
+                                                        @foreach($category['children'] as $subcategory)
+                                                            @if ($subcategory['name']=='SPLITE TYPE')
+                                                                @php $child = getChild($subcategory['id']) @endphp
+                                                                @if(isset($child) && $child!=null)
+                                                                    @foreach($child as $subSubcategory)
+                                                                        <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term">{{$subSubcategory->name}}</a></li>
+                                                                    @endforeach
+                                                                @endif
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </div>
+
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <h2 class="menu-title"><a href="#">CEILING MOUNTED TYPE</a></h2>
+                                                        <ul>
+                                            @foreach($allCategory as $category)
+
+                                                @if ($category['name']=='AIR CONDITIONAR')
+
+                                                    @if(isset($category['children']))
+
+                                                        @foreach($category['children'] as $subcategory)
+                                                            @if ($subcategory['name']=='Ceiling Mounted Type')
+                                                                @php $child = getChild($subcategory['id']) @endphp
+                                                                @if(isset($child) && $child!=null)
+                                                                    @foreach($child as $subSubcategory)
+                                                                        <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term">{{$subSubcategory->name}}</a></li>
+                                                                    @endforeach
+                                                                @endif
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <h2 class="menu-title"><a href="#">CASSETTE TYPE</a></h2>
+                                                            <ul>
+                                            @foreach($allCategory as $category)
+
+                                                @if ($category['name']=='AIR CONDITIONAR')
+
+                                                    @if(isset($category['children']))
+
+                                                        @foreach($category['children'] as $subcategory)
+                                                            @if ($subcategory['name']=='CASSETTE TYPE')
+                                                                                    @php $child = getChild($subcategory['id']) @endphp
+                                                                @if(isset($child) && $child!=null)
+                                                                    @foreach($child as $subSubcategory)
+                                                                        <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term">{{$subSubcategory->name}}</a></li>
+                                                                    @endforeach
+                                                                @endif
+                                                            @endif
+                                                        @endforeach
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                        </li>
+
+                            <li class="menu-item menu-item-has-children item-megamenu">
+                                @foreach($allCategory as $category)
+                                    @if ($category['name']=='REFRIGERATOR')
+                                        <a href="{{url('')}}/products/{{$category->id}}" title="REFREGERATOR" class="link-term mercado-item-title">REFRIGERATORS</a>
+                                    @endif
+                                @endforeach
+                                    <div class="wrap-megamenu">
+                                        <div class="megamenu-content min-height-526 bg-digital-electronic">
+                                            <div class="row">
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <ul>
+                                    @foreach($allCategory as $category)
+
+                                        @if ($category['name']=='REFRIGERATOR')
+                                            @php $child = getChild($category['id']) @endphp
+                                                                    @if(isset($child) && $child!=null)
+                                                                        @foreach($child as $subcategory)
+                                                    <li class="menu-item"><a href="{{url('')}}/products/{{$subcategory->id}}" class="link-term">{{$subcategory->name}}</a></li>
+                                                @endforeach
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                        </li>
+
+                            <li class="menu-item menu-item-has-children item-megamenu">
+                                @foreach($allCategory as $category)
+                                    @if ($category['name']=='FREEZER')
+                                        <a href="{{url('')}}/products/{{$category->id}}" title="FREEZER" class="link-term mercado-item-title">FREEZER</a>
+                                    @endif
+                                @endforeach
+                                    <div class="wrap-megamenu">
+                                        <div class="megamenu-content min-height-526 bg-digital-electronic">
+                                            <div class="row">
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <ul>
+                                    @foreach($allCategory as $category)
+
+                                        @if ($category['name']=='FREEZER')
+                                            @php $child = getChild($category['id']) @endphp
+
+                                            @if(isset($child) && $child!=null)
+
+                                                @foreach($child as $subcategory)
+                                                    <li class="menu-item"><a href="{{url('')}}/products/{{$subcategory->id}}" class="link-term">{{$subcategory->name}}</a></li>
+                                                @endforeach
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                        </li>
+                            <li class="menu-item menu-item-has-children item-megamenu">
+                                @foreach($allCategory as $category)
+                                    @if ($category['name']=='HOME APPLIANCES')
+                                        <a href="{{url('')}}/products/{{$category->id}}" title="HOME APPLIANCES" class="link-term mercado-item-title">Home Appliance</a>
+                                    @endif
+                                @endforeach
+                                    <div class="wrap-megamenu">
+                                        <div class="megamenu-content min-height-526 bg-digital-electronic">
+                                            <div class="row">
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <ul>
+                                    @foreach($allCategory as $category)
+
+                                        @if ($category['name']=='HOME APPLIANCES')
+                                            @php $childTop = getChild($category['id']) @endphp
+
+                                            @if(isset($childTop) && $childTop!=null)
+                                                @foreach($childTop as $subcategory)
+                                                    @if($subcategory->name!='Best Seller Home Appliance' && $subcategory->name!='New Arrivals Home Appliance' && $subcategory->name!='Top Rated Home Appliance')
+                                                        @php $child = getChild($subcategory->id) @endphp
+                                                        @if(isset($child) && $child!=null)
+                                                            @foreach($child as $subSubcategory)
+                                                                                        <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term menu-title ">{{$subSubcategory->name}}</a></li>
+                                                            @endforeach
+                                                        @endif
+                                                        <li class="menu-item"><a href="{{url('')}}/products/{{$subcategory->id}}" class="link-term menu-title ">{{$subcategory->name}}</a></li>
+                                                    @endif
+                                                @endforeach
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                                </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                            </li>
+                        <li class="menu-item menu-item-has-children item-megamenu">
+                                @foreach($allCategory as $category)
+                                    @if ($category['name']=='Accessories')
+                                        <a href="{{url('')}}/products/{{$category->id}}" title="ACCESSORIES" class="link-term mercado-item-title">Accessories</a>
+                                    @endif
+                                @endforeach
+                                    <div class="wrap-megamenu">
+                                        <div class="megamenu-content min-height-526 bg-digital-electronic">
+                                            <div class="row">
+                                                <div class="custom-col-5">
+                                                    <div class="wrap-vertical-nav">
+                                                        <ul>
+                                    @foreach($allCategory as $category)
+
+                                        @if ($category['name']=='Accessories')
+                                            @php $childTop = getChild($category['id']) @endphp
+
+                                            @if(isset($childTop) && $childTop!=null)
+
+                                                @foreach($childTop as $subcategory)
+                                                    @php $child = getChild($subcategory->id) @endphp
+                                                        @if(isset($child) && $child!=null)
+                                                            @foreach($child as $subSubcategory)
+                                                                <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term menu-title ">{{$subSubcategory->name}}</a></li>
+                                                            @endforeach
+                                                        @endif
+                                                        <li class="menu-item"><a href="{{url('')}}/products/{{$subcategory->id}}" class="link-term menu-title ">{{$subcategory->name}}</a></li>
+                                                @endforeach
+                                            @endif
+                                        @endif
+                                    @endforeach
+                                </ul>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                        </li>
+                    </ul>
+                </div>
+            </div> 
+        </div>
+        
+    </div>
+</div>
+{{--Mobil menu END--}}
 <header id="header" class="header header-style-1">
     <div class="container-fluid header-sticky">
         <div class="row">
@@ -92,33 +404,19 @@
                     </div>
                     <div class="topbar-menu right-menu">
                         <ul>
-                            {{-- <li class="menu-item" ><a title="About" href="#">About</a></li> --}}
-                            {{-- <li class="menu-item" ><a title="Store Location" href="dealer-locator.html">Store Location</a></li> --}}
                             <li class="menu-item" ><a title="Store Location" href="{{url('')}}/store/locator">Showrooms</a></li>
-                            {{-- <li class="menu-item" ><a title="Dealer Location" href="{{url('')}}/dealer/locator">Dealer Locator</a></li> --}}
                             <li class="menu-item" ><a title="Corporate Information" href="{{url('')}}/corporateInfo">Corporate Info </a></li>
                             <li class="menu-item" ><a title="Service Center" href="{{url('')}}/serviceCenter/locator">Service Center </a></li>
-                            {{-- <li class="menu-item" ><a title="Newsletter" href="#">Newsletter / Blog</a></li> --}}
-                            @if (Session::get('CustomerName')=='')
-                                <li class="menu-item" ><a title="Register" href="{{url('')}}/customer/register">Register</a></li> 
-                                <li class="menu-item" ><a title="Login" href="{{url('')}}/customerLogin">Login</a></li>
+                             <li class="menu-item" ><a title="Newsletter" href="#">Newsletter / Blog</a></li>
+                            @guest('customer')
+                                <li class="menu-item" ><a title="Register" href="{{route('customer.registration-form')}}">Register</a></li>
+                                <li class="menu-item" ><a title="Login" href="{{ route('customer.login-form') }}">Login</a></li>
                             @else
                                 <li class="menu-item" >
-                                    <a title="Customer Detail" href="{{url('')}}/customer/customerInfomation">{{ (Session::get('CustomerName')) }}
+                                    <a title="Customer Detail" href="{{url('')}}/customer/customerInfomation">{{ Auth::guard('customer')->user()->name }}
                                     </a>
                                 </li>
-                                <li class="menu-item" ><a title="Logout" href="{{url('')}}/customer/logout">Logout</a></li>
-                                {{-- {{ (Session::get('CustomerName')) }}
-                                <div class="btn-group">
-                                    <a href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                        <i class="careerfy-icon careerfy-down-arrow"></i>
-                                    </a>
-
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                        <a class="dropdown-item" href="{{url('')}}/customer/logout">Logout</a>
-                                    </div>
-                                </div> --}}
+                                <li class="menu-item" ><a title="Logout" href="{{route('customer.logout')}}">Logout</a></li>
                             @endif
                         </ul>
                     </div>
@@ -137,10 +435,10 @@
                                 <input type="text" name="search" id="searchCategory" value="" placeholder="Search here...">
 
                                 <button form="form-search-top" type="submit"><i class="fa fa-search" aria-hidden="true"></i></button>
-                                
+
                                 <div class="wrap-list-cate">
 
-                                    <select class="form-control" value="" name="productCategory">
+                                     <select class="form-control" value="" name="productCategory">
                                         <option>All products</option>
                                         @foreach($categories as $category)
                                             @if ($category['name']=='TELEVISION')
@@ -199,7 +497,7 @@
 
                                         @endforeach
                                     </select>
-                                </div>                                
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -248,410 +546,285 @@
                 </div>
             </div>
 
-            <div class="nav-section">
+                <!-- MObile Menu End-->
+                <!--  Menu Descstop menu-->
+<div class="nav-section">
                 <div class="primary-nav-section">
                     <div class="container">
-                        <ul class="nav primary clone-main-menu" id="mercado_main" data-menuname="Main menu" >
-                            <li class="menu-item home-icon">
-                                <a href="{{route('/')}}" class="link-term mercado-item-title"><i class="fa fa-home" aria-hidden="true"></i></a>
-                            </li>
+                        <nav class="navbar-nit">
+                            <div class="sitenavigation">
+                              <ul>
+                                <li class="active2"><a href="{{ url('/') }}" class="homeicon" ><i class="fa fa-home" aria-hidden="true"></i></a></span></li>
+                                  <li class="nav-dropdown">
+                                  @foreach($allCategory as $category)
+                                      @if ($category['name']=='TELEVISION')
+                                          <a href="{{url('')}}/products/{{$category->id}}" title="Digital & Electronics" class="link-term mercado-item-title">Television</a>
+                                      @endif
+                                  @endforeach
+{{--                                  <li class="nav-dropdown"><a href="#">TELEVISION</a>--}}
+                                  <ul>
+                                    <li class="nav-dropdown aro"><a href="#">SMART LED TV</a>
+                                      <ul>
+                                          @foreach($allCategory as $category)
 
-                            <li class="menu-item menu-item-has-children item-megamenu" >
-                                @foreach($allCategory as $category)                      
-                                    @if ($category['name']=='TELEVISION')
-                                        <a href="{{url('')}}/products/{{$category->id}}" title="Digital & Electronics" class="link-term mercado-item-title">Television</a>
-                                    @endif
-                                @endforeach        
-                                <div class="wrap-megamenu">
-                                    <div class="megamenu-content min-height-526 bg-digital-electronic">
-                                        <div class="row">
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <h2 class="menu-title">SMART LED TV</h2>
-                                                    <ul>
-                                                        @foreach($allCategory as $category)
-                                                            
-                                                            @if ($category['name']=='TELEVISION')
-                                                            
-                                                                @if(isset($category['children']))
-                                                                    
-                                                                    @foreach($category['children'] as $subcategory)
-                                                                        @if ($subcategory['name']=='Smart LED TV')
-                                                                            @if(isset($subcategory['children']))
-                                                                                @foreach($subcategory['children'] as $subSubcategory)
-                                                                                    <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term">{{$subSubcategory->name}}</a></li>
-                                                                                @endforeach
-                                                                            @endif
-                                                                        @endif
+                                              @if ($category['name']=='TELEVISION')
+
+                                                  @if(isset($category['children']))
+
+                                                      @foreach($category['children'] as $subcategory)
+                                                          @if ($subcategory['name']=='Smart LED TV')
+                                                              @php $child = getChild($subcategory['id']) @endphp
+                                                              @if(isset($child) && $child!=null)
+                                                                  @foreach($child as $subSubcategory)
+                                                                      <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term">{{$subSubcategory->name}}</a></li>
+                                                                  @endforeach
+                                                              @endif
+                                                          @endif
+                                                      @endforeach
+                                                  @endif
+                                              @endif
+                                          @endforeach
+                                      </ul>
+
+                                      <li class="nav-dropdown aro"><a href="#">BASIC LED TV</a>
+                                          <ul>
+                                              @foreach($allCategory as $category)
+
+                                                  @if ($category['name']=='TELEVISION')
+
+                                                      @if(isset($category['children']))
+
+                                                          @foreach($category['children'] as $subcategory)
+                                                              @if ($subcategory['name']=='Basic LED TV')
+                                                                  @php $child = getChild($subcategory['id']) @endphp
+                                                                  @if(isset($child) && $child!=null)
+                                                                      @foreach($child as $subSubcategory)
+                                                                          <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term">{{$subSubcategory->name}}</a></li>
+                                                                      @endforeach
+                                                                  @endif
+                                                              @endif
+                                                          @endforeach
+                                                      @endif
+                                                  @endif
+                                              @endforeach
+                                          </ul>
+                                      </li>
+                                  </ul>
+                                  </li>
+
+                                  <li class="nav-dropdown ">
+                                      @foreach($allCategory as $category)
+                                          @if ($category['name']=='AIR CONDITIONAR')
+                                              <a href="{{url('')}}/products/{{$category->id}}" title="Digital & Electronics" class="link-term mercado-item-title">Air Conditioner</a>
+                                          @endif
+                                      @endforeach
+                                      <ul>
+                                         <li class="nav-dropdown aro"><a href="#">SPLITE TYPE</a>
+                                        <ul>
+                                            @foreach($allCategory as $category)
+
+                                                @if ($category['name']=='AIR CONDITIONAR')
+
+                                                    @if(isset($category['children']))
+
+                                                        @foreach($category['children'] as $subcategory)
+                                                            @if ($subcategory['name']=='SPLITE TYPE')
+                                                                @php $child = getChild($subcategory['id']) @endphp
+                                                                @if(isset($child) && $child!=null)
+                                                                    @foreach($child as $subSubcategory)
+                                                                        <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term">{{$subSubcategory->name}}</a></li>
                                                                     @endforeach
                                                                 @endif
                                                             @endif
                                                         @endforeach
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                      </li>
 
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <h2 class="menu-title">BASIC LED TV</h2>
-                                                    <ul>
-                                                        @foreach($allCategory as $category)
-                                                            
-                                                            @if ($category['name']=='TELEVISION')
-                                                            
-                                                                @if(isset($category['children']))
-                                                                    
-                                                                    @foreach($category['children'] as $subcategory)
-                                                                        @if ($subcategory['name']=='Basic LED TV')
-                                                                            @if(isset($subcategory['children']))
-                                                                                @foreach($subcategory['children'] as $subSubcategory)
-                                                                                    <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term">{{$subSubcategory->name}}</a></li>
-                                                                                @endforeach
-                                                                            @endif
-                                                                        @endif
+                                      <li class="nav-dropdown aro"><a href="#">CEILING MOUNTED TYPE</a>
+                                        <ul>
+                                            @foreach($allCategory as $category)
+
+                                                @if ($category['name']=='AIR CONDITIONAR')
+
+                                                    @if(isset($category['children']))
+
+                                                        @foreach($category['children'] as $subcategory)
+                                                            @if ($subcategory['name']=='Ceiling Mounted Type')
+                                                                @php $child = getChild($subcategory['id']) @endphp
+                                                                @if(isset($child) && $child!=null)
+                                                                    @foreach($child as $subSubcategory)
+                                                                        <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term">{{$subSubcategory->name}}</a></li>
                                                                     @endforeach
                                                                 @endif
                                                             @endif
                                                         @endforeach
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                    <li class="nav-dropdown aro"><a href="#">CASSETTE TYPE</a>
+                                        <ul>
+                                            @foreach($allCategory as $category)
 
-                            <li class="menu-item menu-item-has-children item-megamenu" >
-                                @foreach($allCategory as $category)                      
-                                    @if ($category['name']=='AIR CONDITIONAR')
-                                        <a href="{{url('')}}/products/{{$category->id}}" title="Digital & Electronics" class="link-term mercado-item-title">Air Conditioner</a>
-                                    @endif
-                                @endforeach 
-                                <div class="wrap-megamenu">
-                                    <div class="megamenu-content min-height-526 bg-air-Conditioner">
-                                        <div class="row">
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <h2 class="menu-title">SPLITE TYPE</h2>
-                                                    <ul>
-                                                        @foreach($allCategory as $category)
-                                                            
-                                                            @if ($category['name']=='AIR CONDITIONAR')
-                                                            
-                                                                @if(isset($category['children']))
-                                                                    
-                                                                    @foreach($category['children'] as $subcategory)
-                                                                        @if ($subcategory['name']=='SPLITE TYPE')
-                                                                            @if(isset($subcategory['children']))
-                                                                                @foreach($subcategory['children'] as $subSubcategory)
-                                                                                    <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term">{{$subSubcategory->name}}</a></li>
-                                                                                @endforeach
-                                                                            @endif
-                                                                        @endif
+                                                @if ($category['name']=='AIR CONDITIONAR')
+
+                                                    @if(isset($category['children']))
+
+                                                        @foreach($category['children'] as $subcategory)
+                                                            @if ($subcategory['name']=='CASSETTE TYPE')
+                                                                @php $child = getChild($subcategory['id']) @endphp
+                                                                @if(isset($child) && $child!=null)
+                                                                    @foreach($child as $subSubcategory)
+                                                                        <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term">{{$subSubcategory->name}}</a></li>
                                                                     @endforeach
                                                                 @endif
                                                             @endif
                                                         @endforeach
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                                    @endif
+                                                @endif
+                                            @endforeach
+                                        </ul>
+                                    </li>
+                                    </ul>
+                                  </li>
 
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <h2 class="menu-title">CEILING MOUNTED TYPE</h2>
-                                                    <ul>
-                                                        @foreach($allCategory as $category)
-                                                            
-                                                            @if ($category['name']=='AIR CONDITIONAR')
-                                                            
-                                                                @if(isset($category['children']))
-                                                                    
-                                                                    @foreach($category['children'] as $subcategory)
-                                                                        @if ($subcategory['name']=='Ceiling Mounted Type')
-                                                                            @if(isset($subcategory['children']))
-                                                                                @foreach($subcategory['children'] as $subSubcategory)
-                                                                                    <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term">{{$subSubcategory->name}}</a></li>
-                                                                                @endforeach
-                                                                            @endif
-                                                                        @endif
-                                                                    @endforeach
-                                                                @endif
-                                                            @endif
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            </div>
+                                  <li class="nav-dropdown ">
+                                      @foreach($allCategory as $category)
+                                          @if ($category['name']=='REFRIGERATOR')
+                                              <a href="{{url('')}}/products/{{$category->id}}" title="Digital & Electronics" class="link-term mercado-item-title">REFRIGERATORS</a>
+                                          @endif
+                                      @endforeach
+                                    <ul>
+                                        <ul>
+                                        </ul>
+                                        @foreach($allCategory as $category)
 
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <h2 class="menu-title">CASSETTE TYPE</h2>
-                                                    <ul>
-                                                        @foreach($allCategory as $category)
-                                                            
-                                                            @if ($category['name']=='AIR CONDITIONAR')
-                                                            
-                                                                @if(isset($category['children']))
-                                                                    
-                                                                    @foreach($category['children'] as $subcategory)
-                                                                        @if ($subcategory['name']=='CASSETTE TYPE')
-                                                                            @if(isset($subcategory['children']))
-                                                                                @foreach($subcategory['children'] as $subSubcategory)
-                                                                                    <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term">{{$subSubcategory->name}}</a></li>
-                                                                                @endforeach
-                                                                            @endif
-                                                                        @endif
-                                                                    @endforeach
-                                                                @endif
-                                                            @endif
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="menu-item menu-item-has-children item-megamenu" >
-                                @foreach($allCategory as $category)                      
-                                    @if ($category['name']=='REFRIGERATOR')
-                                        <a href="{{url('')}}/products/{{$category->id}}" title="Digital & Electronics" class="link-term mercado-item-title">REFRIGERATORS</a>
-                                    @endif
-                                @endforeach
-                                <div class="wrap-megamenu">
-                                    <div class="megamenu-content min-height-526 bg-menu-refrigerator">
-                                        <div class="row">
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <h2 class="menu-title">REFRIGERATOR</h2>
-                                                    <ul>
-                                                        @foreach($allCategory as $category)
-                                                            
-                                                            @if ($category['name']=='REFRIGERATOR')
-                                                            
-                                                                @if(isset($category['children']))
-                                                                    
-                                                                    @foreach($category['children'] as $subcategory)
-                                                                        <li class="menu-item"><a href="{{url('')}}/products/{{$subcategory->id}}" class="link-term">{{$subcategory->name}}</a></li>
-                                                                    @endforeach
-                                                                @endif
-                                                            @endif
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
+                                            @if ($category['name']=='REFRIGERATOR')
 
-                            <li class="menu-item menu-item-has-children item-megamenu" >
-                                @foreach($allCategory as $category)                      
-                                    @if ($category['name']=='FREEZER')
-                                        <a href="{{url('')}}/products/{{$category->id}}" title="Digital & Electronics" class="link-term mercado-item-title">FREEZER</a>
-                                    @endif
-                                @endforeach
-                                <div class="wrap-megamenu">
-                                    <div class="megamenu-content min-height-526 bg-menu-refrigerator">
-                                        <div class="row">
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    <h2 class="menu-title">FREEZER</h2>
-                                                    <ul>
-                                                        @foreach($allCategory as $category)
-                                                            
-                                                            @if ($category['name']=='FREEZER')
-                                                            
-                                                                @if(isset($category['children']))
-                                                                    
-                                                                    @foreach($category['children'] as $subcategory)
-                                                                        <li class="menu-item"><a href="{{url('')}}/products/{{$subcategory->id}}" class="link-term">{{$subcategory->name}}</a></li>
-                                                                    @endforeach
-                                                                @endif
-                                                            @endif
-                                                        @endforeach
-                                                    </ul>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="menu-item menu-item-has-children item-megamenu" >
-                                @foreach($allCategory as $category)                      
-                                    @if ($category['name']=='HOME APPLIANCES')
-                                        <a href="{{url('')}}/products/{{$category->id}}" title="Digital & Electronics" class="link-term mercado-item-title">Home Appliance</a>
-                                    @endif
-                                @endforeach
-                                <div class="wrap-megamenu">
-                                    <div class="megamenu-content min-height-526 bg-microwave-oven">
-                                        <div class="row">
+                                                @php $child = getChild($category['id']) @endphp
+                                                @if(isset($child) && $child != null)
 
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    @foreach($allCategory as $category)
-                                                            
-                                                        @if ($category['name']=='HOME APPLIANCES')
-                                                        
-                                                            @if(isset($category['children']))
-                                                                
-                                                                @foreach($category['children'] as $subcategory)
-                                                                    @if(($subcategory->id)%3==0 && $subcategory->name!='Best Seller Home Appliance' && $subcategory->name!='New Arrivals Home Appliance' && $subcategory->name!='Top Rated Home Appliance')
-                                                                        @if(isset($subcategory['children']))
-                                                                            @foreach($subcategory['children'] as $subSubcategory)
-                                                                                <ul>
-                                                                                    <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term menu-title ">{{$subSubcategory->name}}</a></li>                                                                    
-                                                                                </ul>
-                                                                            @endforeach
-                                                                        @endif
-                                                                        <ul>
-                                                                            <li class="menu-item"><a href="{{url('')}}/products/{{$subcategory->id}}" class="link-term menu-title ">{{$subcategory->name}}</a></li>                                                                    
-                                                                        </ul>
-                                                                    @endif
+                                                    @foreach($child as $subcategory)
+                                                        <li class="menu-item"><a href="{{url('')}}/products/{{$subcategory->id}}" class="link-term">{{$subcategory->name}}</a></li>
+                                                    @endforeach
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                  </li>
+
+                                  <li class="nav-dropdown ">
+                                      @foreach($allCategory as $category)
+                                          @if ($category['name']=='FREEZER')
+                                              <a href="{{url('')}}/products/{{$category->id}}" title="Digital & Electronics" class="link-term mercado-item-title">FREEZER</a>
+                                          @endif
+                                      @endforeach
+                                    <ul>
+                                        @foreach($allCategory as $category)
+
+                                            @if ($category['name']=='FREEZER')
+                                                @php $child = getChild($category['id']) @endphp
+
+                                                @if(isset($child) && $child!=null)
+
+                                                    @foreach($child as $subcategory)
+                                                        <li class="menu-item"><a href="{{url('')}}/products/{{$subcategory->id}}" class="link-term">{{$subcategory->name}}</a></li>
+                                                    @endforeach
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                  </li>
+                                  <li class="nav-dropdown">
+                                      @foreach($allCategory as $category)
+                                          @if ($category['name']=='HOME APPLIANCES')
+                                              <a href="{{url('')}}/products/{{$category->id}}" title="Digital & Electronics" class="link-term mercado-item-title">Home Appliance</a>
+                                          @endif
+                                      @endforeach
+                                  <ul>
+                                          @foreach($allCategory as $category)
+
+                                              @if ($category['name']=='HOME APPLIANCES')
+                                              @php  $childTop = getChild($category['id'])@endphp
+                                          @if(isset($childTop) && $childTop!=null)
+                                                      @foreach($childTop as $subcategory)
+                                                          @if($subcategory->name!='Best Seller Home Appliance' && $subcategory->name!='New Arrivals Home Appliance' && $subcategory->name!='Top Rated Home Appliance')
+                                                          @php  $child = getChild($subcategory->id)@endphp
+                                                              @if(isset($child) && $child!=null)
+                                                                  @foreach($child as $subSubcategory)
+                                                                          <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term menu-title ">{{$subSubcategory->name}}</a></li>
+                                                                  @endforeach
+                                                              @endif
+                                                                  <li class="menu-item"><a href="{{url('')}}/products/{{$subcategory->id}}" class="link-term menu-title ">{{$subcategory->name}}</a></li>
+                                                          @endif
+                                                      @endforeach
+                                                  @endif
+                                              @endif
+                                          @endforeach
+                                  </ul>
+                                  </li>
+
+                                  <li class="nav-dropdown ">
+                                      @foreach($allCategory as $category)
+                                          @if ($category['name']=='Accessories')
+                                              <a href="{{url('')}}/products/{{$category->id}}" title="Digital & Electronics" class="link-term mercado-item-title">Accessories</a>
+                                          @endif
+                                      @endforeach
+                                    <ul>
+                                        @foreach($allCategory as $category)
+
+                                            @if ($category['name']=='Accessories')
+                                                @php $childTop = getChild($category['id']) @endphp
+
+                                                @if(isset($childTop) && $childTop!=null)
+
+                                                    @foreach($childTop as $subcategory)
+                                                        @php $child = getChild($subcategory->id) @endphp
+                                                            @if(isset($child))
+                                                                @foreach($child as $subSubcategory)
+                                                                    <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term menu-title ">{{$subSubcategory->name}}</a></li>
                                                                 @endforeach
                                                             @endif
-                                                        @endif
+                                                                <li class="menu-item"><a href="{{url('')}}/products/{{$subcategory->id}}" class="link-term menu-title ">{{$subcategory->name}}</a></li>
                                                     @endforeach
-                                                </div>
-                                            </div>
+                                                @endif
+                                            @endif
+                                        @endforeach
+                                    </ul>
+                                          <ul>
+                                              @foreach($allCategory as $category)
 
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    @foreach($allCategory as $category)
-                                                            
-                                                        @if ($category['name']=='HOME APPLIANCES')
-                                                        
-                                                            @if(isset($category['children']))
-                                                                
-                                                                @foreach($category['children'] as $subcategory)
-                                                                @if(($subcategory->id)%3==1 && $subcategory->name!='Best Seller Home Appliance' && $subcategory->name!='New Arrivals Home Appliance' && $subcategory->name!='Top Rated Home Appliance')
-                                                                        @if(isset($subcategory['children']))
-                                                                            @foreach($subcategory['children'] as $subSubcategory)
-                                                                                <ul>
-                                                                                    <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term menu-title ">{{$subSubcategory->name}}</a></li>                                                                    
-                                                                                </ul>
-                                                                            @endforeach
-                                                                        @endif
-                                                                        <ul>
-                                                                            <li class="menu-item"><a href="{{url('')}}/products/{{$subcategory->id}}" class="link-term menu-title ">{{$subcategory->name}}</a></li>                                                                    
-                                                                        </ul>
-                                                                    @endif
-                                                                @endforeach
-                                                            @endif
-                                                        @endif
-                                                    @endforeach
-                                                </div>
-                                            </div>
+                                              @if ($category['name']=='Accessories')
 
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    @foreach($allCategory as $category)
-                                                            
-                                                        @if ($category['name']=='HOME APPLIANCES')
-                                                        
-                                                            @if(isset($category['children']))
-                                                                
-                                                                @foreach($category['children'] as $subcategory)
-                                                                @if(($subcategory->id)%3==2 && $subcategory->name!='Best Seller Home Appliance' && $subcategory->name!='New Arrivals Home Appliance' && $subcategory->name!='Top Rated Home Appliance')
-                                                                        @if(isset($subcategory['children']))
-                                                                            @foreach($subcategory['children'] as $subSubcategory)
-                                                                                <ul>
-                                                                                    <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term menu-title ">{{$subSubcategory->name}}</a></li>                                                                    
-                                                                                </ul>
-                                                                            @endforeach
-                                                                        @endif
-                                                                        <ul>
-                                                                            <li class="menu-item"><a href="{{url('')}}/products/{{$subcategory->id}}" class="link-term menu-title ">{{$subcategory->name}}</a></li>                                                                    
-                                                                        </ul>
-                                                                    @endif
-                                                                @endforeach
-                                                            @endif
-                                                        @endif
-                                                    @endforeach
-                                                </div>
-                                            </div>
+                                                  @if(isset($category['children']))
 
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            
-                            <li class="menu-item menu-item-has-children item-megamenu" >
-                                @foreach($allCategory as $category)                      
-                                    @if ($category['name']=='Accessories')
-                                        <a href="{{url('')}}/products/{{$category->id}}" title="Digital & Electronics" class="link-term mercado-item-title">Accessories</a>
-                                    @endif
-                                @endforeach
-                                <div class="wrap-megamenu">
-                                    <div class="megamenu-content min-height-526 bg-Home-kitchen-appliancel">
-                                        <div class="row">
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    @foreach($allCategory as $category)
-                                                            
-                                                        @if ($category['name']=='Accessories')
-                                                        
-                                                            @if(isset($category['children']))
-                                                                
-                                                                @foreach($category['children'] as $subcategory)
-                                                                    @if(($subcategory->id)%2==1)
-                                                                        @if(isset($subcategory['children']))
-                                                                            @foreach($subcategory['children'] as $subSubcategory)
-                                                                                <ul>
-                                                                                    <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term menu-title ">{{$subSubcategory->name}}</a></li>                                                                    
-                                                                                </ul>
-                                                                            @endforeach
-                                                                        @endif
-                                                                        <ul>
-                                                                            <li class="menu-item"><a href="{{url('')}}/products/{{$subcategory->id}}" class="link-term menu-title ">{{$subcategory->name}}</a></li>                                                                    
-                                                                        </ul>
-                                                                    @endif
-                                                                @endforeach
-                                                            @endif
-                                                        @endif
-                                                    @endforeach
-                                                </div>
-                                            </div>
-
-                                            <div class="custom-col-5">
-                                                <div class="wrap-vertical-nav">
-                                                    @foreach($allCategory as $category)
-                                                            
-                                                        @if ($category['name']=='Accessories')
-                                                        
-                                                            @if(isset($category['children']))
-                                                                
-                                                                @foreach($category['children'] as $subcategory)
-                                                                    @if(($subcategory->id)%2==0)
-                                                                        @if(isset($subcategory['children']))
-                                                                            @foreach($subcategory['children'] as $subSubcategory)
-                                                                                <ul>
-                                                                                    <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term menu-title ">{{$subSubcategory->name}}</a></li>                                                                    
-                                                                                </ul>
-                                                                            @endforeach
-                                                                        @endif
-                                                                        <ul>
-                                                                            <li class="menu-item"><a href="{{url('')}}/products/{{$subcategory->id}}" class="link-term menu-title ">{{$subcategory->name}}</a></li>                                                                    
-                                                                        </ul>
-                                                                    @endif
-                                                                @endforeach
-                                                            @endif
-                                                        @endif
-                                                    @endforeach
-                                                </div>
-                                            </div>
-
-                                            
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-
-                        </ul>
-                    </div>
+                                                      @foreach($category['children'] as $subcategory)
+                                                          @if(($subcategory->id)%2==0)
+                                                              @if(isset($subcategory['children']))
+                                                                  @foreach($subcategory['children'] as $subSubcategory)
+                                                                      <ul>
+                                                                          <li class="menu-item"><a href="{{url('')}}/products/{{$subSubcategory->id}}" class="link-term menu-title ">{{$subSubcategory->name}}</a></li>
+                                                                      </ul>
+                                                                  @endforeach
+                                                              @endif
+                                                              <ul>
+                                                                  <li class="menu-item"><a href="{{url('')}}/products/{{$subcategory->id}}" class="link-term menu-title ">{{$subcategory->name}}</a></li>
+                                                              </ul>
+                                                          @endif
+                                                      @endforeach
+                                                  @endif
+                                              @endif
+                                          @endforeach
+                                    </ul>
+                                  </li>
+                              </ul>
+                            </div>
+                          </nav>
                 </div>
-            </div>
         </div>
     </div>
 </header>
@@ -672,9 +845,10 @@
             <div class="container">
                 <ul>
                     <li class="fc-info-item">
-                        <i class="fa fa-truck" aria-hidden="true"></i>
                         <div class="wrap-left-info">
+                            <i class="fa fa-truck" aria-hidden="true"></i>
                             <h4 class="fc-name">Free Shipping</h4>
+                            <p class="fc-desc">At your doorstep</p>
                             {{-- <p class="fc-desc">
                                 @foreach($allCategory as $category)  
                                     @if ($category['name']=='Free Shipping Cost') 
@@ -769,16 +943,11 @@
                             <div class="item-content">
                                 <div class="wrap-vertical-nav">
                                     <ul>
-                                        @if (Session::get('CustomerId')=='')
-                                            <li class="menu-item"><a href="{{url('')}}/customerLogin" class="link-term">My Account</a></li>
+                                        @guest('customer')
+                                            <li class="menu-item"><a href="{{ route('customer.login-form') }}" class="link-term">My Account</a></li>
                                         @else
                                             <li class="menu-item"><a href="{{url('')}}/customer/customerInfomation" class="link-term">My Account</a></li> 
                                         @endif
-                                        
-                                        {{-- <li class="menu-item"><a href="#" class="link-term">Brands</a></li>
-                                        <li class="menu-item"><a href="#" class="link-term">Gift Certificates</a></li>
-                                        <li class="menu-item"><a href="#" class="link-term">Affiliates</a></li>
-                                        <li class="menu-item"><a href="#" class="link-term">Wish list</a></li> --}}
                                     </ul>
                                 </div>
                             </div>
@@ -938,6 +1107,84 @@
         });
     });
 </script>
+            
+              <script id="rendered-js">
+              // on document ready
+              $(document).ready(function () {
+              
+                // show/hide the mobile menu based on class added to container
+                $('.menu-icon').click(function () {
+                  $(this).parent().toggleClass('is-tapped');
+                  $('#hamburger').toggleClass('open');
+                });
+              
+                // handle touch device events on drop down, first tap adds class, second navigates
+                $('.touch .sitenavigation li.nav-dropdown > a').on('touchend',
+                function (e) {
+                  if ($('.menu-icon').is(':hidden')) {
+                    var parent = $(this).parent();
+                    $(this).find('.clicked').removeClass('clicked');
+                    if (parent.hasClass('clicked')) {
+                      window.location.href = $(this).attr('href');
+                    } else {
+                      $(this).addClass('linkclicked');
+              
+                      // close other open menus at this level
+                      $(this).parent().parent().find('.clicked').removeClass('clicked');
+              
+                      parent.addClass('clicked');
+                      e.preventDefault();
+                    }
+                  }
+                });
+              
+                // handle the expansion of mobile menu drop down nesting
+                $('.sitenavigation li.nav-dropdown').click(
+                function (event) {
+                  if (event.stopPropagation) {
+                    event.stopPropagation();
+                  } else {
+                    event.cancelBubble = true;
+                  }
+              
+                  if ($('.menu-icon').is(':visible')) {
+                    $(this).find('> ul').toggle();
+                    $(this).toggleClass('expanded');
+                  }
+                });
+              
+              
+                // prevent links for propagating click/tap events that may trigger hiding/unhiding
+                $('.sitenavigation a.nav-dropdown, .sitenavigation li.nav-dropdown a').click(
+                function (event) {
+                  if (event.stopPropagation) {
+                    event.stopPropagation();
+                  } else {
+                    event.cancelBubble = true;
+                  }
+                });
+              
+              
+                // javascript fade in and out of dropdown menu
+                $('.no-touch .sitenavigation li').hover(
+                function () {
+                  if (!$('.menu-icon').is(':visible')) {
+                    $(this).find('> ul').fadeIn(100);
+                  }
+                },
+                function () {
+                  if (!$('.menu-icon').is(':visible')) {
+                    $(this).find('> ul').fadeOut(100);
+                  }
+                });
+              
+              });
+              
+                  </script>
+
+
+
+
  <!-- layerSlider -->
 
 

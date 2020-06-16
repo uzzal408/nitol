@@ -118,6 +118,7 @@
 
                                 @foreach ($bestSellerAll as $key=>$item_one)
                                     @foreach ($item_one as $key=>$product)
+                                        @if($product->publication_status)
                                         <div class="product product-style-2 equal-elem ">
                                             <div class="product-thumnail">
                                                 <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -162,6 +163,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endif
                                     @endforeach
                                 @endforeach
                             </div>
@@ -177,6 +179,7 @@
 
                                 @foreach ($newArrivalsAll as $key=>$item_one)
                                     @foreach ($item_one as $key=>$product)
+                                        @if($product->publication_status)
                                         <div class="product product-style-2 equal-elem ">
                                             <div class="product-thumnail">
                                                 <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -222,6 +225,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endif
                                     @endforeach
                                 @endforeach
                             </div>
@@ -237,6 +241,7 @@
 
                                 @foreach ($topRatedAll as $key=>$item_one)
                                     @foreach ($item_one as $key=>$product)
+                                        @if($product->publication_status)
                                         <div class="product product-style-2 equal-elem ">
                                             <div class="product-thumnail">
                                                 <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -282,6 +287,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @endif
                                     @endforeach
                                 @endforeach
 
@@ -319,7 +325,7 @@
             <div class="box-item wrap-show-advance-info-box style-1">
                 <h3 class="title-box">Television</h3>
                 <div class="wrap-top-banner">
-                    <a href="#" class="link-banner banner-effect-2">
+                    <a href="{{ url('products',$tvId) }} "class="link-banner banner-effect-2">
                         <figure><img src="{{url('')}}/{{$bannerImageAll[0]->image}}" width="870" height="240" alt=""></figure>
                     </a>
                 </div>
@@ -346,6 +352,7 @@
                                         @if ($category['name']=='TELEVISION')
                                             @php $productIdTv            = $category->products; @endphp
                                             @foreach($productIdTv as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -381,6 +388,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                    @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -399,6 +407,7 @@
                                         @if ($category['name']=='Best Seller TV')
                                             @php $productIdTv            = $category->products; @endphp
                                             @foreach($productIdTv as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -434,6 +443,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -452,6 +462,7 @@
                                         @if ($category['name']=='New Arrivals TV')
                                             @php $productIdTv            = $category->products; @endphp
                                             @foreach($productIdTv as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -487,6 +498,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -505,6 +517,7 @@
                                         @if ($category['name']=='Top Rated TV')
                                             @php $productIdTv            = $category->products; @endphp
                                             @foreach($productIdTv as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -540,6 +553,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -560,6 +574,7 @@
                             @if ($category['name']=='Best Seller TV')
                                 @php $productIdTv            = $category->products; @endphp
                                 @foreach($productIdTv as $key=>$product)
+                                    @if($product->publication_status)
                                     @if ($key<5)
                                         <li class="product-item">
                                             <div class="product product-widget-style">
@@ -596,6 +611,7 @@
                                             </div>
                                         </li>
                                     @endif
+                                    @endif
                                 @endforeach
                                 @if (count($productIdTv)>5)
                                     <li class="funtion-item">
@@ -615,7 +631,7 @@
                 <h3 class="title-box">Air Conditioner <span class="ac_ton_calculation"><a href="{{url('')}}/ac_ton_calculation">জেনে নিন আপনার রুমের জন্য কত টনের এসি প্রয়োজন</a></span></h3>
                 
                 <div class="wrap-top-banner">
-                    <a href="#" class="link-banner banner-effect-2">
+                    <a href="{{ url('products',$acId) }}" class="link-banner banner-effect-2">
                         <figure><img src="{{url('')}}/{{$bannerImageAll[1]->image}}" width="870" height="240" alt=""></figure>
                     </a>
                 </div>
@@ -642,6 +658,7 @@
                                         @if ($category['name']=='AIR CONDITIONAR')
                                             @php $productIdAC            = $category->products; @endphp
                                             @foreach($productIdAC as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -670,6 +687,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -688,6 +706,7 @@
                                         @if ($category['name']=='Best Seller AC')
                                             @php $productIdAC            = $category->products; @endphp
                                             @foreach($productIdAC as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -716,6 +735,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -734,6 +754,7 @@
                                         @if ($category['name']=='New Arrivals AC')
                                             @php $productIdAC            = $category->products; @endphp
                                             @foreach($productIdAC as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -762,6 +783,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -780,6 +802,7 @@
                                         @if ($category['name']=='Top Rated AC')
                                             @php $productIdAC            = $category->products; @endphp
                                             @foreach($productIdAC as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -808,6 +831,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -828,6 +852,7 @@
                             @if ($category['name']=='Best Seller AC')
                                 @php $productIdAC            = $category->products; @endphp
                                 @foreach($productIdAC as $key=>$product)
+                                    @if($product->publication_status)
                                     @if ($key<5)
                                         <li class="product-item">
                                             <div class="product product-widget-style">
@@ -857,6 +882,7 @@
                                             </div>
                                         </li>
                                     @endif
+                                    @endif
                                 @endforeach
                                 @if (count($productIdAC)>5)
                                     <li class="funtion-item">
@@ -875,7 +901,7 @@
             <div class="box-item wrap-show-advance-info-box style-1">
                 <h3 class="title-box">Refrigerator</h3>
                 <div class="wrap-top-banner">
-                    <a href="#" class="link-banner banner-effect-2">
+                    <a href="{{ url('products',$rfgnId) }}" class="link-banner banner-effect-2">
                         <figure><img src="{{url('')}}/{{$bannerImageAll[2]->image}}" width="870" height="240" alt=""></figure>
                     </a>
                 </div>
@@ -901,6 +927,7 @@
                                         @if ($category['name']=='REFRIGERATOR')
                                             @php $productIdFreeze            = $category->products; @endphp
                                             @foreach($productIdFreeze as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -936,6 +963,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -954,6 +982,7 @@
                                         @if ($category['name']=='Best Seller Refregerator')
                                             @php $productIdFreeze= $category->products; @endphp
                                             @foreach($productIdFreeze as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -989,6 +1018,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -1007,6 +1037,7 @@
                                         @if ($category['name']=='New Arrivals Refregerator')
                                             @php $productIdFreeze            = $category->products; @endphp
                                             @foreach($productIdFreeze as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -1042,6 +1073,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -1061,6 +1093,7 @@
                                         @if ($category['name']=='Top Rated Refregerator')
                                             @php $productIdFreeze            = $category->products; @endphp
                                             @foreach($productIdFreeze as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -1096,6 +1129,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -1116,6 +1150,7 @@
                             @if ($category['name']=='Best Seller Refregerator')
                                 @php $productIdFreeze            = $category->products; @endphp
                                 @foreach($productIdFreeze as $key=>$product)
+                                    @if($product->publication_status)
                                     @if ($key<5)
                                         <li class="product-item">
                                             <div class="product product-widget-style">
@@ -1152,6 +1187,7 @@
                                             </div>
                                         </li>
                                     @endif
+                                    @endif
                                 @endforeach
                                 @if (count($productIdFreeze)>5)
                                     <li class="funtion-item">
@@ -1170,7 +1206,7 @@
             <div class="box-item wrap-show-advance-info-box style-1">
                 <h3 class="title-box">Frezeer</h3>
                 <div class="wrap-top-banner">
-                    <a href="#" class="link-banner banner-effect-2">
+                    <a href="{{ url('products',$freezerId) }}" class="link-banner banner-effect-2">
                         <figure><img src="{{url('')}}/{{$bannerImageAll[2]->image}}" width="870" height="240" alt=""></figure>
                     </a>
                 </div>
@@ -1196,6 +1232,7 @@
                                         @if ($category['name']=='FREEZER')
                                             @php $productIdFreeze            = $category->products; @endphp
                                             @foreach($productIdFreeze as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -1231,6 +1268,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -1249,6 +1287,7 @@
                                         @if ($category['name']=='Best Seller Frezeer')
                                             @php $productIdFreeze            = $category->products; @endphp
                                             @foreach($productIdFreeze as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -1284,6 +1323,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -1302,6 +1342,7 @@
                                         @if ($category['name']=='New Arrivals Frezeer')
                                             @php $productIdFreeze            = $category->products; @endphp
                                             @foreach($productIdFreeze as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -1337,6 +1378,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -1355,6 +1397,7 @@
                                         @if ($category['name']=='Top Rated Frezeer')
                                             @php $productIdFreeze            = $category->products; @endphp
                                             @foreach($productIdFreeze as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -1390,6 +1433,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -1409,6 +1453,7 @@
                             @if ($category['name']=='Best Seller Frezeer')
                                 @php $productIdFreeze            = $category->products; @endphp
                                 @foreach($productIdFreeze as $key=>$product)
+                                    @if($product->publication_status)
                                     @if ($key<5)
                                         <li class="product-item">
                                             <div class="product product-widget-style">
@@ -1445,6 +1490,7 @@
                                             </div>
                                         </li>
                                     @endif
+                                    @endif
                                 @endforeach
                                 @if (count($productIdFreeze)>5)
                                     <li class="funtion-item">
@@ -1465,7 +1511,7 @@
             <div class="box-item wrap-show-advance-info-box style-1">
                 <h3 class="title-box">Home & Kitchen Appliance</h3>
                 <div class="wrap-top-banner">
-                    <a href="#" class="link-banner banner-effect-2">
+                    <a href="{{ url('products',$HAId) }}" class="link-banner banner-effect-2">
                         <figure><img src="{{asset('/')}}/{{$bannerImageAll[3]->image}}" width="870" height="240" alt=""></figure>
                     </a>
                 </div>
@@ -1491,6 +1537,7 @@
                                         @if ($category['name']=='HOME APPLIANCES')
                                             @php $productIdHomeAppliance            = $category->products; @endphp
                                             @foreach($productIdHomeAppliance as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -1519,6 +1566,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -1537,6 +1585,7 @@
                                         @if ($category['name']=='Best Seller Home Appliance')
                                             @php $productIdHomeAppliance            = $category->products; @endphp
                                             @foreach($productIdHomeAppliance as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -1565,6 +1614,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -1583,6 +1633,7 @@
                                         @if ($category['name']=='New Arrivals Home Appliance')
                                             @php $productIdHomeAppliance            = $category->products; @endphp
                                             @foreach($productIdHomeAppliance as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -1611,6 +1662,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -1629,6 +1681,7 @@
                                         @if ($category['name']=='Top Rated Home Appliance')
                                             @php $productIdHomeAppliance            = $category->products; @endphp
                                             @foreach($productIdHomeAppliance as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -1657,6 +1710,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -1676,6 +1730,7 @@
                             @if ($category['name']=='Best Seller Home Appliance')
                                 @php $productIdHomeAppliance            = $category->products; @endphp
                                 @foreach($productIdHomeAppliance as $key=>$product)
+                                    @if($product->publication_status)
                                     @if ($key<5)
                                         <li class="product-item">
                                             <div class="product product-widget-style">
@@ -1705,6 +1760,7 @@
                                             </div>
                                         </li>
                                     @endif
+                                    @endif
                                 @endforeach
                                 @if (count($productIdHomeAppliance)>5)
                                     <li class="funtion-item">
@@ -1724,7 +1780,7 @@
             <div class="box-item wrap-show-advance-info-box style-1">
                 <h3 class="title-box">Accessories</h3>
                 <div class="wrap-top-banner">
-                    <a href="#" class="link-banner banner-effect-2">
+                    <a href="{{ url('products',$accessoriesId) }}" class="link-banner banner-effect-2">
                         <figure><img src="{{asset('/')}}/{{$bannerImageAll[3]->image}}" width="870" height="240" alt=""></figure>
                     </a>
                 </div>
@@ -1750,6 +1806,7 @@
                                         @if ($category['name']=='Accessories')
                                             @php $productIdAccessories            = $category->products; @endphp
                                             @foreach($productIdAccessories as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -1778,6 +1835,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -1796,6 +1854,7 @@
                                         @if ($category['name']=='Best Seller Accessories')
                                             @php $productIdAccessories            = $category->products; @endphp
                                             @foreach($productIdAccessories as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -1824,6 +1883,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -1842,6 +1902,7 @@
                                         @if ($category['name']=='New Arrivals Accessories')
                                             @php $productIdAccessories            = $category->products; @endphp
                                             @foreach($productIdAccessories as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -1870,6 +1931,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -1888,6 +1950,7 @@
                                         @if ($category['name']=='Top Rated Accessories')
                                             @php $productIdAccessories            = $category->products; @endphp
                                             @foreach($productIdAccessories as $product)
+                                                @if($product->publication_status)
                                                 <div class="product product-style-2 equal-elem ">
                                                     <div class="product-thumnail">
                                                         <a href="{{route('show-product',['id'=>$product->id])}}" title="{{$product->title}}">
@@ -1916,6 +1979,7 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                @endif
                                             @endforeach
                                         @endif
                                     @endforeach
@@ -1935,6 +1999,7 @@
                             @if ($category['name']=='Best Seller Home Appliance')
                                 @php $productIdHomeAppliance            = $category->products; @endphp
                                 @foreach($productIdHomeAppliance as $key=>$product)
+                                    @if($product->publication_status)
                                     @if ($key<5)
                                         <li class="product-item">
                                             <div class="product product-widget-style">
@@ -1963,6 +2028,7 @@
                                                 </div>
                                             </div>
                                         </li>
+                                    @endif
                                     @endif
                                 @endforeach
                                 @if (count($productIdHomeAppliance)>5)

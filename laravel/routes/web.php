@@ -24,8 +24,8 @@
 
 Auth::routes();
 
-//Route::get('/home', 'HomeController@index')->name('/home');
-Route::get('/home', 'OrderController@manageOrderInfo')->name('/home');
+
+Route::get('/admin-home', 'OrderController@manageOrderInfo')->name('admin.home');
 
 
 //****************************Employee management***************************************//
@@ -113,26 +113,26 @@ Route::get('/ingredient/delete/{id}/{is_active}',[
 //****************************Addons management***************************************//
 
 
-Route::get('/all-addons',[
-    'uses'=>'AddonController@index',
-    'as'=>'addons'
-]);
-Route::post('/addon/save',[
-    'uses'=>'AddonController@saveAddon',
-    'as'=>'save-addon'
-]);
-Route::get('/addon/edit/{id}',[
-    'uses'=>'AddonController@editAddon',
-    'as'=>'edit-addon'
-]);
-Route::post('/addon/update',[
-    'uses'=>'AddonController@updateAddon',
-    'as'=>'update-addon'
-]);
-Route::get('/addon/delete/{id}/{is_active}',[
-    'uses'=>'AddonController@deleteAddon',
-    'as'=>'delete-addon'
-]);
+//Route::get('/all-addons',[
+//    'uses'=>'AddonController@index',
+//    'as'=>'addons'
+//]);
+//Route::post('/addon/save',[
+//    'uses'=>'AddonController@saveAddon',
+//    'as'=>'save-addon'
+//]);
+//Route::get('/addon/edit/{id}',[
+//    'uses'=>'AddonController@editAddon',
+//    'as'=>'edit-addon'
+//]);
+//Route::post('/addon/update',[
+//    'uses'=>'AddonController@updateAddon',
+//    'as'=>'update-addon'
+//]);
+//Route::get('/addon/delete/{id}/{is_active}',[
+//    'uses'=>'AddonController@deleteAddon',
+//    'as'=>'delete-addon'
+//]);
 
 //****************************Product management***************************************//
 
@@ -160,17 +160,14 @@ Route::get('product/delete/{id}',[
     'uses'=>'ProductController@deleteProduct',
     'as'=>'delete-product'
 ]);
+Route::get('product/publication/{id}',[
+    'uses'=>'ProductController@publication',
+    'as'=>'publication-product'
+]);
 
-
-//////////// Product Type ////////////
-//Route::get('/applicantLogin/store',            'ApplicantLoginController@store');
 
 Route::get('/allProducts/{id}',            'ProductTypeController@index');
 
-// Route::get('/all-products/{id}',[
-//     'uses'=>'ProductTypeController@index',
-//     'as'=>'products-type'
-// ]);
 
 
 //****************************Product management***************************************//
@@ -178,6 +175,10 @@ Route::get('/allProducts/{id}',            'ProductTypeController@index');
 Route::get('/',[
     'uses'=>'NitolElectronicsController@index',
     'as'=>'/'
+]);
+Route::get('/home',[
+    'uses'=>'NitolElectronicsController@index',
+    'as'=>'home'
 ]);
 
 Route::get('/product/{id}',[
@@ -233,32 +234,10 @@ Route::post('/ac_ton_calculation/recommend',[
     'as'=>'tonCalculationRecommend'
 ]);
 
-//Route::any('/customer/customerLogin',         'CustomerLoginController@customerLogin');
-
-Route::get('/customerLogin',                    'CustomerLoginController@login');
-Route::get('/customer/register',                'CustomerLoginController@register');
-Route::post('/customer/authenticate',           'CustomerLoginController@authenticate');
-Route::post('/customerLogin/store',             'CustomerLoginController@store');
-Route::get('/customer/request',                 'CustomerLoginController@request');
-Route::get('/customer/logout',                  'CustomerLoginController@logout');
-Route::post('/productReview/store/{id}',        'CustomerLoginController@reviewStore');
-Route::get('/cardDelete/{id}/{product_id?}',    'CustomerLoginController@cardDelete');
-Route::get('/customer/customerInfomation',      'CustomerLoginController@customerInfomation');
-Route::get('/customerProfile/{id}',             'CustomerLoginController@customerProfile');
-Route::get('/customerProfileEdit/{id}',         'CustomerLoginController@customerProfileEdit');
-Route::post('/customerProfileupdate',[
-    'uses'=>'CustomerLoginController@customerProfileupdate',
-    'as'=>'customerProfileupdate'
-]);
 
 Route::get('/customer/orderDetails/{id}', 'CustomerLoginController@orderDetails');
 
 
-
-// Route::get('/product-details/{id}',[
-//     'uses'=>'PizzaHutController@ajaxProductDetails',
-//     'as'=>'product-details'
-// ]);
 
 //****************************Cart management***************************************//
 
@@ -287,6 +266,19 @@ Route::get('cart/show',[
     'uses'=>'CartController@showCart',
     'as'=>'cart'
 ]);
+//Cutomer
+
+Route::post('/productReview/store/{id}',        'CustomerFrontController@reviewStore');
+Route::get('/cardDelete/{id}/{product_id?}',    'CustomerFrontController@cardDelete');
+Route::get('/customer/customerInfomation',      'CustomerFrontController@customerInfomation');
+Route::get('/customerProfile/{id}',             'CustomerFrontController@customerProfile');
+Route::get('/customerProfileEdit/{id}',         'CustomerFrontController@customerProfileEdit');
+Route::post('/customerProfileupdate',[
+    'uses'=>'CustomerFrontController@customerProfileupdate',
+    'as'=>'customerProfileupdate'
+]);
+
+Route::get('/customer/orderDetails/{id}', 'CustomerFrontController@orderDetails');
 
 //****************************Checkout management***************************************//
 
@@ -314,54 +306,6 @@ Route::get('/checkoutProceed',    'CheckoutController@checkoutProceed');
 
 
 
-//****************************Customer management***************************************//
-
-Route::get('/customer/registration/form',[
-    'uses'=>'CustomerController@customerRegistrationForm',
-    'as'=>'register-customer'
-]);
-Route::post('/customer/otp/send',[
-    'uses'=>'CustomerController@sendOtpToCustomer',
-    'as'=>'send-otp-to-customer'
-]);
-
-Route::get('/customer/otp/verification',[
-    'uses'=>'CustomerController@verifyCustomerOTP',
-    'as'=>'verify-customer-otp'
-]);
-
-Route::post('/customer/save',[
-    'uses'=>'CustomerController@saveCustomer',
-    'as'=>'save-customer'
-]);
-
-//Route::get('/customer/track/registration',[
-//    'uses'=>'CustomerController@trackRegistration',
-//    'as'=>'track_registration'
-//]);
-
-Route::get('/customer/track/order',[
-    'uses'=>'CustomerController@trackOrder',
-    'as'=>'track_order'
-]);
-
-Route::get('/customer/login',[
-    'uses'=>'CustomerController@customerLoginForm',
-    'as'=>'login-customer'
-]);
-
-Route::get('/customer/logout',[
-    'uses'=>'CustomerController@customerLogout',
-    'as'=>'logout-customer'
-]);
-Route::post('/customer/sign-in/email',[
-    'uses'=>'CustomerController@customerLoginByEmail',
-    'as'=>'login-customer-by-email'
-]);
-Route::post('/customer/sign-in/mobile',[
-    'uses'=>'CustomerController@customerLoginFormByMobile',
-    'as'=>'login-customer-by-mobile'
-]);
 
 
 
@@ -374,11 +318,10 @@ Route::get('/about/us',[
     'uses'=>'NitolElectronicsController@aboutUs',
     'as'=>'about-us'
 ]);
-
-// Route::get('/dealer/locator/{id}',[
-//     'uses'=>'PizzaHutController@dealerLocator',
-//     'as'=>'dealer-locator'
-// ]);
+Route::get('/privacy',[
+    'uses'=>'NitolElectronicsController@privacy',
+    'as'=>'privacy'
+]);
 
 
 Route::get('/store/locator/{id?}',      'NitolElectronicsController@storeLocator');
@@ -466,6 +409,19 @@ Route::get('exports/customer/information','CustomerController@export')->name('ad
 
 Route::get('exports/corporate/sales','CustomerController@exportCorporate')->name('admin.exports.corporate-sale');
 Route::get('exports/customer/review','CustomerController@exportReview')->name('admin.exports.review');
+
+
+//Customer Login
+
+Route::get('customer/login','CustomerLoginController@showLoginForm')->name('customer.login-form');
+Route::get('customer/registration','CustomerRegistrationController@registrationForm')->name('customer.registration-form');
+Route::post('customer/registration/create','CustomerRegistrationController@create')->name('customer.registration-create');
+Route::post('customer/login','CustomerLoginController@login')->name('customer.login');
+Route::get('customer/logout','CustomerLoginController@logout')->name('customer.logout');
+
+//Socialite
+Route::get('redirect/{provider}', 'SocialLoginController@redirect');
+Route::get('login/{provider}/callback','SocialLoginController@Callback');
 
 
 

@@ -33,14 +33,9 @@
                                     <?php endif; ?>
                                 </div>
                             </div>
-
-                            
                         </div>
                     </div>
                     <div class="detail-info">
-
-                        
-
                         <form class="addToCart" action="#" method="post">
                             
                             <?php if($productReviewAvg>0): ?>
@@ -52,7 +47,7 @@
                                 </div>
                             <?php else: ?>
                             <?php endif; ?>
-                            
+
                             
                             <h2 class="product-name"><?php echo e($product->title); ?></h2>
                             <div class="short-desc">
@@ -63,8 +58,6 @@
                                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
                                 </ul>
                             </div>
-                            
-                            
 
                             <div class="wrap-price">
                                 <?php if($product->sale_price==0 && $product->discount==0): ?>
@@ -102,16 +95,8 @@
                                     ?>
                                 <?php endif; ?>
 
-                                <div class="radio"> 
-                                
-                                    <?php if($product_price > 10001 && $product_price<30000): ?>
-                                        0% EMI
-                                    
-                                        <label><input type="radio" name="optradio" checked onclick="emiAmount(<?php echo e($product_price); ?>,3)">3 Month</label>
-
-                                        <label><input type="radio" name="optradio" onclick="emiAmount(<?php echo e($product_price); ?>,6)">6 Month</label>
-                                    
-                                    <?php elseif( $product_price>30001): ?>
+                                <div class="radio">
+                                    <?php if( $product_price>=10000): ?>
                                     
                                         0% EMI
                                         
@@ -385,7 +370,7 @@
                                 <div class="product product-style-2 equal-elem ">
                                     <div class="product-thumnail">
                                         <a href="<?php echo e(route('show-product',['id'=>$product->id])); ?>" title="<?php echo e($product->title); ?>">
-                                            <figure><img src="<?php echo e(asset($product->image1)); ?>"width="214" height="214" alt="T-Shirt Raw Hem Organic Boro Constrast Denim"></figure>
+                                            <figure><img src="<?php echo e(asset($product->image1)); ?>"width="214" height="214" alt="<?php echo e($product->title); ?>"></figure>
                                         </a>
                                         <div class="group-flash">
                                             <span class="flash-item new-label">Releted Product</span>

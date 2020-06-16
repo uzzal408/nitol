@@ -1,3 +1,6 @@
+<?php $__env->startSection('title'); ?>
+    Nitol Admin || Categories
+<?php $__env->stopSection(); ?>
         <?php $__env->startSection('body'); ?>
 <!-- Content Header (Page header) -->
 <section class="content-header">

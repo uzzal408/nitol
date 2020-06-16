@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\ProductReview;
 use App\CorporateSale;
 use App\Customer;
-use Illuminate\Http\Request;
-use Intervention\Image\Facades\Image;
 
 class AdminviewController extends Controller
 {

@@ -1,6 +1,8 @@
 @extends('admin.master')
+@section('title')
+    Nitol Admin || Orders
+    @endsection
 @section('body')
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
             Invoice
@@ -44,9 +46,9 @@
                     
                     @if($shipping_detail)
                         <span style="color: red;font-weight: bold">{{$order->order_type}}</span><br/>
-                        <b>Name: </b>{{$shipping_detail->name}}<br>
+                        <b>Name: </b>{{$shipping_detail->first_name .' '.$shipping_detail->last_name}}<br>
                         <b>E-mail: </b>{{$shipping_detail->email}}<br>
-                        <b>Mobile: </b>{{$shipping_detail->mobile}}<br>
+                        <b>Mobile: </b>{{$shipping_detail->phone}}<br>
                         
                         <b>Address: </b>{{$order->address}}<br>
                         <b>Country: </b>{{$order->country}}<br>
@@ -69,14 +71,13 @@
                 </address>
             </div>
             <!-- /.col -->
+
+{{--            {{ dd($order->billing_detail) }}--}}
             <div class="col-sm-4 invoice-col">
                 <strong>Billing Address</strong>
                 @php($billing_details = $order->billing_detail)
                 <address>
                     @if($billing_details)
-                        {{--John Doe<br>--}}
-                        {{--795 Folsom Ave, Suite 600<br>--}}
-                        {{--San Francisco, CA 94107<br>--}}
                         Payment Type: {{$billing_details->payment_type}} <br>
                         Payment Status: {{$billing_details->payment_status}}
                     @endif
@@ -84,10 +85,11 @@
             </div>
             <!-- /.col -->
             <div class="col-sm-4 invoice-col">
-                <b>Invoice #OR00{{$order->id}}</b><br>
+                <b>Invoice #OR00{{ $order->id }}</b><br>
                 <br>
                 <b>Order ID:</b> OR00{{$order->id}}<br>
-                <b>Payment Due:</b> {{$order->created_at}}<br>
+                <b>Order Date:</b> {{$order->created_at}}<br>
+                <b>Payment Method:</b> {{$order->payment_method}}<br>
                 <b>Account:</b> --------
             </div>
             <!-- /.col -->

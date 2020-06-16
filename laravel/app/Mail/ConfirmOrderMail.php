@@ -32,6 +32,7 @@ class ConfirmOrderMail extends Mailable
      */
     public function build()
     {
+
         $cart = $this->cart;
         $info = $this->info;
         return $this->view('mail.confirm-order-mail',compact('cart','info'));

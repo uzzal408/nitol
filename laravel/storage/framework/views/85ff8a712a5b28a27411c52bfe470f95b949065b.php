@@ -1,5 +1,4 @@
 <?php $__env->startSection('body'); ?>
-    <!-- Content Header (Page header) -->
     <section class="content-header">
         <h1>
             Invoice
@@ -44,9 +43,9 @@
                     
                     <?php if($shipping_detail): ?>
                         <span style="color: red;font-weight: bold"><?php echo e($order->order_type); ?></span><br/>
-                        <b>Name: </b><?php echo e($shipping_detail->name); ?><br>
+                        <b>Name: </b><?php echo e($shipping_detail->first_name .' '.$shipping_detail->last_name); ?><br>
                         <b>E-mail: </b><?php echo e($shipping_detail->email); ?><br>
-                        <b>Mobile: </b><?php echo e($shipping_detail->mobile); ?><br>
+                        <b>Mobile: </b><?php echo e($shipping_detail->phone); ?><br>
                         
                         <b>Address: </b><?php echo e($order->address); ?><br>
                         <b>Country: </b><?php echo e($order->country); ?><br>
@@ -71,14 +70,13 @@
                 </address>
             </div>
             <!-- /.col -->
+
+
             <div class="col-sm-4 invoice-col">
                 <strong>Billing Address</strong>
                 <?php ($billing_details = $order->billing_detail); ?>
                 <address>
                     <?php if($billing_details): ?>
-                        
-                        
-                        
                         Payment Type: <?php echo e($billing_details->payment_type); ?> <br>
                         Payment Status: <?php echo e($billing_details->payment_status); ?>
 
@@ -90,7 +88,8 @@
                 <b>Invoice #OR00<?php echo e($order->id); ?></b><br>
                 <br>
                 <b>Order ID:</b> OR00<?php echo e($order->id); ?><br>
-                <b>Payment Due:</b> <?php echo e($order->created_at); ?><br>
+                <b>Order Date:</b> <?php echo e($order->created_at); ?><br>
+                <b>Payment Method:</b> <?php echo e($order->payment_method); ?><br>
                 <b>Account:</b> --------
             </div>
             <!-- /.col -->
