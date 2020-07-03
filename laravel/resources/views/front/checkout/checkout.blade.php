@@ -27,7 +27,6 @@
                                     <figure><img src="{{asset('/')}}/{{$value->options->image}}"alt=""></figure>
                                 </a>
 
-                                {{-- <figure><img src="{{asset('/')}}/{{$value->options->image}}" alt=""></figure> --}}
                             </div>
                             <div class="product-name">
                                 <a class="link-to-product" href="#">{{$value->name}}</a>
@@ -41,9 +40,6 @@
                             <div class="quantity">
                                 <form class="updateCartNew" action="#" method="post">
                                     <div class="quantity-input">
-                                        {{-- <input type="text" name="product-quatity" value={{$value->qty}} data-max="120" pattern="[0-9]*" id="productQuantityItem" onclick="productQuantity(this.value)"> --}}
-                                        {{-- <a class="btn btn-reduce" href="#" onclick="quantityDecrease()"></a>
-                                        <a class="btn btn-increase" href="#" onclick="quantityIncrease()"></a> --}}
                                         <input type="text" name="product-quatity" value={{$value->qty}} data-max="120" pattern="[0-9]*" id="productQuantityItem[{{$key}}]">
                                         <input type="hidden" name="product_id" value="{{$value->id}}">
                                         <input type="hidden" name="product_rowId" value="{{$value->rowId}}">
@@ -55,7 +51,6 @@
                                         <button type="submit" class="btn btn-reduce" value="{{$key}}"   onclick="quantityDecrease(this.value)"></button>
                                         <button type="submit" class="btn btn-increase" value="{{$key}}" onclick="quantityIncrease(this.value)"></button>
                                     </div>
-                                    {{-- <button type="submit" class="btn add-to-cart btn-block">Update Cart</button> --}}
                                 </form>
                             </div>
                             <div class="price-field sub-total"><p class="price" id="totalPrice[{{$key}}]">{{$value->price*$value->qty}}</p></div>
@@ -74,11 +69,6 @@
                        @guest('customer')
                             <button type="submit" class="btn btn-medium"><a title="Login" href="{{ route('customer.login-form') }}" style="color:white">Proceed to Checkout</a></button>
                         @else
-                            <!--<form method="POST" action="{{url('')}}/paymentMethod">-->
-                            <!--    @csrf()-->
-                            <!--    <input type="hidden" name="hidden" value="1">-->
-                            <!--    <button type="submit" class="btn btn-medium">Proceed to Checkout</button>-->
-                            <!--</form>-->
                             <button type="submit" class="btn btn-medium"><a title="Login" href="{{url('')}}/checkoutProceed" style="color:white">Proceed to Checkout</a></button>
                         @endif
                     </div>

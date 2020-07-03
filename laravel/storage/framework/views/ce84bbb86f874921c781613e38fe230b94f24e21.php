@@ -2,6 +2,11 @@
     Order Pizza Online For Delivery | Home
 <?php $__env->stopSection(); ?>
 <?php $__env->startSection('body'); ?>
+    <script>
+        $(document).ready(function(){
+            localStorage.removeItem('newGrandTotal')
+        });
+    </script>
     <!-- main content start-->
     <div class="main-content">
     <?php echo $__env->make('front.includes.back-header', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>

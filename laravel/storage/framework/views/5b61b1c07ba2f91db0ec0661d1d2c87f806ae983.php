@@ -27,7 +27,6 @@
                                     <figure><img src="<?php echo e(asset('/')); ?>/<?php echo e($value->options->image); ?>"alt=""></figure>
                                 </a>
 
-                                
                             </div>
                             <div class="product-name">
                                 <a class="link-to-product" href="#"><?php echo e($value->name); ?></a>
@@ -41,8 +40,6 @@
                             <div class="quantity">
                                 <form class="updateCartNew" action="#" method="post">
                                     <div class="quantity-input">
-                                        
-                                        
                                         <input type="text" name="product-quatity" value=<?php echo e($value->qty); ?> data-max="120" pattern="[0-9]*" id="productQuantityItem[<?php echo e($key); ?>]">
                                         <input type="hidden" name="product_id" value="<?php echo e($value->id); ?>">
                                         <input type="hidden" name="product_rowId" value="<?php echo e($value->rowId); ?>">
@@ -54,7 +51,6 @@
                                         <button type="submit" class="btn btn-reduce" value="<?php echo e($key); ?>"   onclick="quantityDecrease(this.value)"></button>
                                         <button type="submit" class="btn btn-increase" value="<?php echo e($key); ?>" onclick="quantityIncrease(this.value)"></button>
                                     </div>
-                                    
                                 </form>
                             </div>
                             <div class="price-field sub-total"><p class="price" id="totalPrice[<?php echo e($key); ?>]"><?php echo e($value->price*$value->qty); ?></p></div>
@@ -73,11 +69,6 @@
                        <?php if(auth()->guard('customer')->guest()): ?>
                             <button type="submit" class="btn btn-medium"><a title="Login" href="<?php echo e(route('customer.login-form')); ?>" style="color:white">Proceed to Checkout</a></button>
                         <?php else: ?>
-                            <!--<form method="POST" action="<?php echo e(url('')); ?>/paymentMethod">-->
-                            <!--    <?php echo csrf_field(); ?>-->
-                            <!--    <input type="hidden" name="hidden" value="1">-->
-                            <!--    <button type="submit" class="btn btn-medium">Proceed to Checkout</button>-->
-                            <!--</form>-->
                             <button type="submit" class="btn btn-medium"><a title="Login" href="<?php echo e(url('')); ?>/checkoutProceed" style="color:white">Proceed to Checkout</a></button>
                         <?php endif; ?>
                     </div>

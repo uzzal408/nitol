@@ -110,31 +110,6 @@ Route::get('/ingredient/delete/{id}/{is_active}',[
     'as'=>'delete-ingredient'
 ]);
 
-//****************************Addons management***************************************//
-
-
-//Route::get('/all-addons',[
-//    'uses'=>'AddonController@index',
-//    'as'=>'addons'
-//]);
-//Route::post('/addon/save',[
-//    'uses'=>'AddonController@saveAddon',
-//    'as'=>'save-addon'
-//]);
-//Route::get('/addon/edit/{id}',[
-//    'uses'=>'AddonController@editAddon',
-//    'as'=>'edit-addon'
-//]);
-//Route::post('/addon/update',[
-//    'uses'=>'AddonController@updateAddon',
-//    'as'=>'update-addon'
-//]);
-//Route::get('/addon/delete/{id}/{is_active}',[
-//    'uses'=>'AddonController@deleteAddon',
-//    'as'=>'delete-addon'
-//]);
-
-//****************************Product management***************************************//
 
 Route::get('/all-products',[
     'uses'=>'ProductController@index',
@@ -410,7 +385,31 @@ Route::get('exports/customer/information','CustomerController@export')->name('ad
 Route::get('exports/corporate/sales','CustomerController@exportCorporate')->name('admin.exports.corporate-sale');
 Route::get('exports/customer/review','CustomerController@exportReview')->name('admin.exports.review');
 
-
+//Coupon
+Route::get('/all-coupons',[
+    'uses'=>'CouponController@index',
+    'as'=>'admin.coupons.all'
+]);
+Route::post('/coupon/save',[
+    'uses'=>'CouponController@store',
+    'as'=>'admin.coupons.store'
+]);
+Route::get('/coupon/edit/{id}',[
+    'uses'=>'CouponController@edit',
+    'as'=>'admin.coupons.edit'
+]);
+Route::post('/coupon/update',[
+    'uses'=>'CouponController@update',
+    'as'=>'admin.coupons.update'
+]);
+Route::get('/coupon/delete/{id}',[
+    'uses'=>'CouponController@delete',
+    'as'=>'admin.coupons.delete'
+]);
+Route::post('/check-coupon-discount',[
+    'uses'=>'CheckoutController@checkCouponDiscount',
+    'as'=>'front.coupon.check'
+]);
 //Customer Login
 
 Route::get('customer/login','CustomerLoginController@showLoginForm')->name('customer.login-form');
@@ -422,6 +421,11 @@ Route::get('customer/logout','CustomerLoginController@logout')->name('customer.l
 //Socialite
 Route::get('redirect/{provider}', 'SocialLoginController@redirect');
 Route::get('login/{provider}/callback','SocialLoginController@Callback');
+
+//Clear By artisan
+
+Route::get('cache-clear','ClearController@cacheClear');
+Route::get('config-clear','ClearController@configClear');
 
 
 

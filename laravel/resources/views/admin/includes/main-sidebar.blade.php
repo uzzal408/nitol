@@ -31,9 +31,6 @@
             <li>
                 <a href="{{route('categories')}}">
                     <i class="fa fa-th"></i> <span>Categories</span>
-                    {{--<span class="pull-right-container">--}}
-              {{--<small class="label pull-right bg-green">new</small>--}}
-            {{--</span>--}}
                 </a>
             </li>
             <li class="treeview">
@@ -49,14 +46,22 @@
                     <li><a href="{{route('new-product')}}"><i class="fa fa-circle-o"></i> Add Product </a></li>
                 </ul>
             </li>
+            <!-- Coupons sidebar -->
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-cog"></i>
+                    <span>Coupons</span>
+                    <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('admin.coupons.all')}}"><i class="fa fa-circle-o"></i>All Coupon</a></li>
+                </ul>
+            </li>
             <li>
                 <a href="{{route('manage-order')}}">
                     <i class="fa fa-envelope"></i> <span>Orders</span>
-                    {{--<span class="pull-right-container">--}}
-              {{--<small class="label pull-right bg-yellow">12</small>--}}
-              {{--<small class="label pull-right bg-green">16</small>--}}
-              {{--<small class="label pull-right bg-red">5</small>--}}
-            {{--</span>--}}
                 </a>
             </li>
 

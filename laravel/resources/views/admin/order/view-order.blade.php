@@ -120,26 +120,6 @@
                         </tr>
                         <tr>
                     @endforeach
-                    {{--<td>1</td>--}}
-                    {{--<td>Need for Speed IV</td>--}}
-                    {{--<td>247-925-726</td>--}}
-                    {{--<td>Wes Anderson umami biodiesel</td>--}}
-                    {{--<td>$50.00</td>--}}
-                    {{--</tr>--}}
-                    {{--<tr>--}}
-                    {{--<td>1</td>--}}
-                    {{--<td>Monsters DVD</td>--}}
-                    {{--<td>735-845-642</td>--}}
-                    {{--<td>Terry Richardson helvetica tousled street art master</td>--}}
-                    {{--<td>$10.70</td>--}}
-                    {{--</tr>--}}
-                    {{--<tr>--}}
-                    {{--<td>1</td>--}}
-                    {{--<td>Grown Ups Blue Ray</td>--}}
-                    {{--<td>422-568-642</td>--}}
-                    {{--<td>Tousled lomo letterpress</td>--}}
-                    {{--<td>$25.99</td>--}}
-                    {{--</tr>--}}
                     </tbody>
                 </table>
             </div>
@@ -178,7 +158,11 @@
                         </tr>
                         <tr>
                             <th>Shipping:</th>
-                            <td>৳ 0.00</td>
+                            <td>৳ {{ $order->delivery_charge }}</td>
+                        </tr>
+                        <tr>
+                            <th>Discount:</th>
+                            <td>{{$order->discount}}</td>
                         </tr>
                         <tr>
                             <th>Total:</th>

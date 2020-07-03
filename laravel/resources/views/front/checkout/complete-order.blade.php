@@ -3,6 +3,11 @@
     Order Pizza Online For Delivery | Home
 @endsection
 @section('body')
+    <script>
+        $(document).ready(function(){
+            localStorage.removeItem('newGrandTotal')
+        });
+    </script>
     <!-- main content start-->
     <div class="main-content">
     @include('front.includes.back-header')

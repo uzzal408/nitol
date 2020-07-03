@@ -1,7 +1,10 @@
 <?php
 namespace App\Http\Controllers;
+use App\Coupon;
 use App\Mail\ConfirmOrderMail;
+use App\Mail\OrderDetails;
 use Gloudemans\Shoppingcart\Facades\Cart;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -42,23 +45,35 @@ class CheckoutController extends Controller{
             'fname'     => 'required|string',
             'email'     => 'required|email',
             'phone'     => 'required|digits:11',
-            'add'       => 'required|string',
-            'country'   => 'required|string',
-            'city'      => 'required|string',
+            'add'       => 'nullable|string',
+            'country'   => 'nullable|string',
+            'city'      => 'nullable|string',
+            'zip_code'      => 'nullable|numeric',
         ]);
 
         //****************Card & CardDetail******************//
-        $grand_total        = Cart::subtotal();//Session::get('grandTotal');
+        $shipping       = Category::where(['name' => 'Shipping Cost'])->first();
+        $shippingCost = $shipping->description;
+        $subtotal = str_replace(',','',Cart::subtotal());
+        if(Session::has('discount')){
+            $discount = Session::get('discount');
+            $grand_total = ($subtotal + $shippingCost) - $discount;
+        }else{
+            $discount = 0;
+            $grand_total        = $subtotal + $shippingCost + $discount;
+        }
         $customer_id        = Auth::guard('customer')->user()->id;
         $store_id           = Session::get('StoreID');
         $order_type         = Session::get('Mode');
-        $shippingCost       = Category::where(['name' => 'Shipping Cost'])->first();
         $order              = new Order();
         $orderId            = 'NN'.time();
         $order->id          = $orderId;
         $order->order_total = $grand_total;
         $order->order_type  = $order_type;
-        
+        $order->discount    = $discount;
+        $order->delivery_charge    = $shippingCost;
+        $order->sub_total    = $subtotal;
+
         $order->address     = $request->add;
         $order->country     = $request->country;
         $order->zip_code    = $request->zip_code;
@@ -77,12 +92,13 @@ class CheckoutController extends Controller{
         $productssl = array();
         $i=0;
         $cartProducts = Cart::content();
+//        dd($cartProducts);
         if ($cartProducts) {
             foreach ($cartProducts as $cartProduct) {
                 $orderDetails = new OrderDetail();
                 $orderDetails->order_id = $orderId;
                 $orderDetails->product_id = $cartProduct->options->product_id;
-                $orderDetails->customer_login_id = Session::get('CustomerId');
+                $orderDetails->customer_login_id = Auth::guard('customer')->user()->id;
                 $orderDetails->product_name = $cartProduct->name;
                 $orderDetails->product_price = $cartProduct->price;
                 $orderDetails->product_quantity = $cartProduct->qty;
@@ -120,18 +136,24 @@ class CheckoutController extends Controller{
             'name' => $request->fname,
             'order_id' => $orderId,
             'phone'    => $request->phone,
-            'total' => $grand_total
+            'address'  => $request->add,
+            'city'     => $request->city,
+            'total'     => $grand_total,
+            'shipping_cost'     => $shippingCost,
+            'discount'     => $discount,
+            'subtotal'    => $subtotal,
+            'payment_type' => $order->payment_method
         );
 
-        Mail::to('badhon@gmail.com')->send(new ConfirmOrderMail($cartProducts,$info));
-        
+//        Mail::to('badhon@gmail.com')->send(new ConfirmOrderMail($cartProducts,$info));
+        Mail::to($shipping->email)
+            ->send(new OrderDetails($cartProducts,$info));
+
         // exit;
         $post_data = array();
 
         $post_data['store_id'] = $this->config['apiCredentials']['store_id'];
-//        dd($post_data['store_id']);
         $post_data['store_passwd'] = $this->config['apiCredentials']['store_password'];
-//        dd($post_data['store_passwd']);
 
 //        $post_data['store_id'] = "testbox";
 //        $post_data['store_passwd'] = "qwerty";
@@ -216,6 +238,8 @@ class CheckoutController extends Controller{
             	echo "<meta http-equiv='refresh' content='0;url=".$sslcz['GatewayPageURL']."'>";
             	# header("Location: ". $sslcz['GatewayPageURL']);
             	Cart::destroy();
+                $request->session()->forget('discount');
+                $request->session()->forget('newGrandTotal');
             	exit;
             } else {
             	echo "JSON Data parsing error!";
@@ -224,6 +248,8 @@ class CheckoutController extends Controller{
          else
          {
              Cart::destroy();
+             $request->session()->forget('discount');
+             $request->session()->forget('newGrandTotal');
              return redirect()->route('complete-order');
          }
         
@@ -276,11 +302,9 @@ class CheckoutController extends Controller{
 
         if(!empty($request->all()))
         {
-//            dd('okey');
             $val_id = ($request->val_id);
             $store_id = urlencode($this->config['apiCredentials']['store_id']);
             $store_passwd = urlencode($this->config['apiCredentials']['store_password']);
-            
             $requested_url = ($this->config['apiDomain'] . $this->config['apiUrl']['order_validate'] . "?val_id=" . $val_id . "&store_id=" . $store_id . "&store_passwd=" . $store_passwd . "&v=1&format=json");
             $handle = curl_init();
             curl_setopt($handle, CURLOPT_URL, $requested_url);
@@ -409,6 +433,31 @@ class CheckoutController extends Controller{
             # Failed to connect with SSLCOMMERZ
             echo "Faile to connect with SSLCOMMERZ";
         }
+    }
+
+    public function checkCouponDiscount(Request $request){
+        $code = $request->coupon_code;
+        $shipping_cost = $request->shipping_cost;
+        $sub_total = $request->sub_total;
+        $coupon = Coupon::where('coupon_code',$code)->where('status',1)->first();
+        if($coupon){
+          $discount = $this->getDiscount($coupon->type,$sub_total,$coupon->discount);
+            Session::put('discount',$discount);
+            $newGrandTotal = ($sub_total+$shipping_cost)-$discount;
+            Session::put('newGrandTotal',$discount);
+          return response()->json(['success'=>'You get discount Tk'.$discount,'newGrandTotal'=>$newGrandTotal]);
+        }else{
+            return response()->json(['success'=>'Invalid coupon code']);
+        }
+    }
+
+    protected function getDiscount($type,$subTotal,$discountAmount){
+        if($type){
+            $discount = ($discountAmount*$subTotal)/100;
+        }else{
+            $discount = $discountAmount;
+        }
+        return $discount;
     }
    
 }

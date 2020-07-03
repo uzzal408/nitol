@@ -1,3 +1,6 @@
+<?php $__env->startSection('title'); ?>
+    Nitol Admin || Orders
+    <?php $__env->stopSection(); ?>
 <?php $__env->startSection('body'); ?>
     <section class="content-header">
         <h1>
@@ -120,26 +123,6 @@
                         </tr>
                         <tr>
                     <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                     </tbody>
                 </table>
             </div>
@@ -178,7 +161,11 @@
                         </tr>
                         <tr>
                             <th>Shipping:</th>
-                            <td>৳ 0.00</td>
+                            <td>৳ <?php echo e($order->delivery_charge); ?></td>
+                        </tr>
+                        <tr>
+                            <th>Discount:</th>
+                            <td><?php echo e($order->discount); ?></td>
                         </tr>
                         <tr>
                             <th>Total:</th>

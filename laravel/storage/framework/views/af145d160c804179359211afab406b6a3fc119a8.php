@@ -25,14 +25,14 @@
                         <?php endif; ?>
                     </div>
                     <div class="row-in-form">
-                        <label for="lname">last name<span>*</span></label>
-                        <input id="lname" type="text" class="@error('lname') is-invalid @enderror" name="lname" value="<?php echo e(isset($customerShoppingDetail->last_name) ? $customerShoppingDetail->last_name : ''); ?>" placeholder="Your last name" required>
+                        <label for="lname">last name<span></span></label>
+                        <input id="lname" type="text" class="@error('lname') is-invalid @enderror" name="lname" value="<?php echo e(isset($customerShoppingDetail->last_name) ? $customerShoppingDetail->last_name : ''); ?>" placeholder="Your last name">
                         <?php if($errors->has('lname')): ?>
                         <div class="alert alert-danger"><?php echo e($errors->first('lname')); ?></div>
                         <?php endif; ?>
                     </div>
                     <div class="row-in-form">
-                        <label for="email">Email Addreess:</label>
+                        <label for="email">Email Addreess:<span>*</span></label>
                         <input id="email" class="@error('email') is-invalid @enderror" type="email" name="email" value="<?php echo e(isset($customerShoppingDetail->email) ? $customerShoppingDetail->email : ''); ?>" placeholder="Type your email">
                         <?php if($errors->has('email')): ?>
                             <div class="alert alert-danger"><?php echo e($errors->first('email')); ?></div>
@@ -40,21 +40,21 @@
                     </div>
                     <div class="row-in-form">
                         <label for="phone">Phone number<span>*</span></label>
-                        <input id="phone"  class="@error('phone') is-invalid @enderror" type="text" name="phone" value="<?php echo e(isset($customerShoppingDetail->phone) ? $customerShoppingDetail->phone : ''); ?>" placeholder="11 digits format" required>
+                        <input id="phone"  class="@error('phone') is-invalid @enderror" type="text" name="phone" value="<?php echo e(isset($customerShoppingDetail->phone) ? $customerShoppingDetail->phone : ''); ?>" placeholder="11 digits format">
                         <?php if($errors->has('phone')): ?>
                             <div class="alert alert-danger"><?php echo e($errors->first('phone')); ?></div>
                         <?php endif; ?>
                     </div>
 
                     <div class="row-in-form">
-                        <label for="add">Address:<span>*</span></label>
-                        <input id="add"  class="@error('add') is-invalid @enderror"type="text" name="add" value="<?php echo e(isset($customerShoppingDetail->address) ? $customerShoppingDetail->address : ''); ?>" placeholder="Street at apartment number" required>
+                        <label for="add">Address:<span></span></label>
+                        <input id="add"  class="@error('add') is-invalid @enderror"type="text" name="add" value="<?php echo e(isset($customerShoppingDetail->address) ? $customerShoppingDetail->address : ''); ?>" placeholder="Street at apartment number">
                         <?php if($errors->has('add')): ?>
                             <div class="alert alert-danger"><?php echo e($errors->first('add')); ?></div>
                         <?php endif; ?>
                     </div>
                     <div class="row-in-form">
-                        <label for="country">Country<span>*</span></label>
+                        <label for="country">Country<span></span></label>
                         <input id="country" class="@error('country') is-invalid @enderror" type="text" name="country" value="<?php echo e(isset($customerShoppingDetail->country) ? $customerShoppingDetail->country : ''); ?>" placeholder="United States" >
                         <?php if($errors->has('country')): ?>
                             <div class="alert alert-danger"><?php echo e($errors->first('country')); ?></div>
@@ -62,22 +62,18 @@
                     </div>
                     <div class="row-in-form">
                         <label for="zip-code">Postcode / ZIP:</label>
-                        <input id="zip-code" type="number" name="zip_code" value="<?php echo e(isset($customerShoppingDetail->zip_code) ? $customerShoppingDetail->zip_code : ''); ?>" placeholder="Your postal code">
+                        <input id="zip-code" type="number" class="@error('zip_code') is-invalid @enderror" name="zip_code" value="<?php echo e(isset($customerShoppingDetail->zip_code) ? $customerShoppingDetail->zip_code : ''); ?>" placeholder="Your postal code">
+                        <?php if($errors->has('zip_code')): ?>
+                            <div class="alert alert-danger"><?php echo e($errors->first('zip_code')); ?></div>
+                        <?php endif; ?>
                     </div>
                     <div class="row-in-form">
-                        <label for="city">Town / City<span>*</span></label>
+                        <label for="city">Town / City<span></span></label>
                         <input id="city" class="@error('city') is-invalid @enderror" type="text" name="city" value="<?php echo e(isset($customerShoppingDetail->town) ? $customerShoppingDetail->town : ''); ?>" placeholder="City name">
                         <?php if($errors->has('city')): ?>
                             <div class="alert alert-danger"><?php echo e($errors->first('city')); ?></div>
                         <?php endif; ?>
                     </div>
-                    <p class="row-in-form fill-wife">
-                        
-                        <label class="checkbox-field">
-                            <input name="different-add" id="different-add" value="forever" type="checkbox">
-                            <span>Ship to a different address?</span>
-                        </label>
-                    </p>
                 </div>
                 
                 <div class="summary summary-checkout">
@@ -96,33 +92,41 @@
                                 <span class="payment-desc">You will able to pay for your products using local credit/debit cards like VISA, MasterCard, DBBL Nexus Card and any kind of credit card or bank accounts right from your online store.</span>
                             </label>
                         </div>
-            
+
+
+
                         <p class="summary-info grand-total"><span>Grand Total</span> 
-                            <span class="grand-total-price">
+                            <span class="grand-total-price" id="grandTotal">
                                 <?php echo e(filter_var(Cart::subtotal(),FILTER_SANITIZE_NUMBER_INT)/100 + $shippingCost->description); ?> TK
                             </span>
                         </p>
+                        <p id="discount"></p>
                         <?php if(auth()->guard('customer')->guest()): ?>
                             <button type="submit" class="btn btn-medium"><a title="Login" href="<?php echo e(route('customer.login-form')); ?>" style="color:white">Place order</a></button>
                         <?php else: ?>
-                            <button type="submit" class="btn btn-medium">Place order</button>
+                            <button type="submit" class="btn btn-medium" id="place_order">Place order</button>
                         <?php endif; ?>
 
                     </div>
+                    <?php echo e(Form::close()); ?>
+
                     <div class="summary-item shipping-method">
                         <h4 class="title-box f-title">Shipping method</h4>
                         <p class="summary-info"><span class="title">Flat Rate</span></p>
                         <p class="summary-info"><span class="title">Fixed <?php echo e($shippingCost->description); ?>.00</span></p>
+                       <form method="POST">
                         <h4 class="title-box">Discount Codes</h4>
+                           <h2 style="color: red" id="message"></h2>
                         <p class="row-in-form">
                             <label for="coupon-code">Enter Your Coupon code:</label>
-                            <input id="coupon-code" type="text" name="coupon-code" value="" placeholder="">
+                            <input id="coupon_code" type="text" name="coupon_code" value="">
+                            <input id="shipping_cost" type="hidden" name="shipping_cost" value="<?php echo e($shippingCost->description); ?>" placeholder="">
+                            <input id="sub_total" type="hidden" name="sub_total" value="<?php echo e(filter_var(Cart::subtotal(),FILTER_SANITIZE_NUMBER_INT)/100); ?>" placeholder="">
                         </p>
-                        <a href="#" class="btn btn-small">Apply</a>
+                        <button class="btn btn-small">Apply</button>
+                       </form>
                     </div>
                 </div>
-            <?php echo e(Form::close()); ?>
-
             <div class="wrap-show-advance-info-box style-1 box-in-site">
                 <h3 class="title-box">Most Viewed Products</h3>
                 <div class="wrap-products">
@@ -169,11 +173,41 @@
 <?php $__env->startSection('script'); ?>
     <script !src="">
         $(document).ready(function(){
+            if(localStorage.getItem("newGrandTotal") != null) {
+                document.getElementById("grandTotal").innerHTML = localStorage.getItem("newGrandTotal") +' ' +'TK';
+            }
             $("#payment-cash-on-delevery").click(function(){
                 document.getElementById('payment-method-sslcommerz').checked = false;
             });
             $("#payment-method-sslcommerz").click(function(){
                 document.getElementById('payment-cash-on-delevery').checked = false;
+            });
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $(".btn-small").click(function(e){
+                e.preventDefault();
+                var coupon_code = $("input[name=coupon_code]").val();
+                var shipping_cost = $("input[name=shipping_cost]").val();
+                var sub_total = $("input[name=sub_total]").val();
+                $.ajax({
+                    type:'POST',
+                    url:'/nitol/check-coupon-discount',
+                    data:{coupon_code:coupon_code, sub_total:sub_total, shipping_cost:shipping_cost},
+                    success:function(data){
+                        $(".grand-total-price").text(data.newGrandTotal+' '+'TK');
+                        $("#message").html(data.success);
+                        if(data.newGrandTotal) {
+                            $("#discount").html("Discount added with GrandTotal");
+                            localStorage.setItem("newGrandTotal", data.newGrandTotal);
+                        }else{
+                            $("#discount").html("")
+                        }
+                    }
+                });
+
             });
         });
     </script>

@@ -31,9 +31,6 @@
             <li>
                 <a href="<?php echo e(route('categories')); ?>">
                     <i class="fa fa-th"></i> <span>Categories</span>
-                    
-              
-            
                 </a>
             </li>
             <li class="treeview">
@@ -49,14 +46,22 @@
                     <li><a href="<?php echo e(route('new-product')); ?>"><i class="fa fa-circle-o"></i> Add Product </a></li>
                 </ul>
             </li>
+            <!-- Coupons sidebar -->
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-cog"></i>
+                    <span>Coupons</span>
+                    <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="<?php echo e(route('admin.coupons.all')); ?>"><i class="fa fa-circle-o"></i>All Coupon</a></li>
+                </ul>
+            </li>
             <li>
                 <a href="<?php echo e(route('manage-order')); ?>">
                     <i class="fa fa-envelope"></i> <span>Orders</span>
-                    
-              
-              
-              
-            
                 </a>
             </li>
 
